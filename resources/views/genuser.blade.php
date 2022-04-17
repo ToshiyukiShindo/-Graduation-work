@@ -63,7 +63,7 @@
                                             <th>email</th>
                                             <th>permission</th>
                                             <th>org</th>
-                                            <th>操作</th>
+                                            <th colspan="2">操作</th>
                                         </tr>
                                     </thead>
                                     <tbody>
