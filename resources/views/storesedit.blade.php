@@ -8,11 +8,11 @@
             <p></p>
             <div class="form-group">
                 <label for="stores_org_code">org_code</label>
-                <input type="number" name="stores_org_code" class="form-control" value="{{$store->stores_org_code}}">
+                <input type="number" name="stores_org_code" class="form-control" value="{{$store->store_org_code}}">
             </div>
             <div class="form-group">
                 <label for="name">name</label>
-                <input type="text" name="name" class="form-control" value="{{$store->stores_name}}">
+                <input type="text" name="name" class="form-control" value="{{$store->store_name}}">
             </div>
             <!-- Save ボタン/Back ボタン -->
             <div class="well well-sm">

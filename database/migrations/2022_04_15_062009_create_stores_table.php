@@ -17,6 +17,7 @@ return new class extends Migration
             $table->id();
             $table->integer('store_org_code');
             $table->string('store_name');
+            $table->timestamps();
         });
     }
 

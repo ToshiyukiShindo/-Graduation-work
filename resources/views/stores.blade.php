@@ -17,12 +17,12 @@
              <!-- 本のタイトル -->
              <div class="form-group">
                  <div class="col-sm-6">{{'グループコード'}}
-                     <input type="number" name="stores_org_code" class="form-control">
+                     <input type="number" name="store_org_code" class="form-control">
                  </div>
              </div>
              <div class="form-group">
                  <div class="col-sm-6">{{'店舗名'}}
-                     <input type="text" name="stores_name" class="form-control">
+                     <input type="text" name="store_name" class="form-control">
                  </div>
              </div>
              <!-- 登録ボタン -->
@@ -43,9 +43,9 @@
                                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                                     <thead>
                                         <tr>
-                                            <th>StoresID</th>
-                                            <th>org_code</th>
-                                            <th>name</th>
+                                            <th>StoreID</th>
+                                            <th>store_org_code</th>
+                                            <th>store_name</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -53,19 +53,19 @@
                                         @foreach ($stores as $store)
                                         <tr>
                                             <td class="table-text">
-                                                <div>{{ $store->stores_id }}</div>
+                                                <div>{{ $store->id }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $store->stores_org_code }}</div>
+                                                <div>{{ $store->store_org_code }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $store->stores_name }}</div>
+                                                <div>{{ $store->store_name }}</div>
                                             </td>
                                             <td style="display:flex; gap:10px;">
-                                            <form action="{{ url('storesedit/'.$store->stores_id) }}" method="GET" name="stores_id"> {{ csrf_field() }}
+                                            <form action="{{ url('storesedit/'.$store->id) }}" method="GET" name="store_id"> {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-sm btn-primary">Edit</button>
                                             </form>
-                                            <form action="{{ url('store/'.$store->stores_id) }}" method="POST">
+                                            <form action="{{ url('store/'.$store->id) }}" method="POST">
                                              {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-sm btn-dark">削除</button>

@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Post; //この行を上に追加
 use Validator;
 use App\Http\Controllers\HomeController;//追記
+use Illuminate\Support\Facades\Hash;
 
 class HomeController extends Controller
 {
@@ -84,7 +85,7 @@ class HomeController extends Controller
          $users->email = $request->email;
          $users->permission = $request->permission;
          $users->org = $request->org;
-         $users->password = $request->password;
+         $users->password = Hash::make($request->password);
          $users->save(); 
          
          return redirect('/generalusers');

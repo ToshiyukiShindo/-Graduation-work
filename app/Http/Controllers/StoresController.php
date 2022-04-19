@@ -43,7 +43,7 @@ class StoresController extends Controller
     {
                 //バリデーション
         $validator = Validator::make($request->all(), [
-        'stores_org_code' => 'required|max:255',
+        'store_org_code' => 'required|max:255',
         ]);
         
         //バリデーション:エラー 
@@ -55,8 +55,8 @@ class StoresController extends Controller
         
          // Eloquent モデル
          $stores = new Store;
-         $stores->stores_org_code = $request->stores_org_code;
-         $stores->stores_name = $request->stores_name;
+         $stores->store_org_code = $request->store_org_code;
+         $stores->store_name = $request->store_name;
          $stores->save(); 
          
          return redirect('/stores');

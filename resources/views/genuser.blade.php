@@ -88,7 +88,7 @@
                                             <form action="{{ url('usersedit/'.$user->id) }}" method="GET" name="id"> {{ csrf_field() }}
                                                 <button type="submit" class="btn btn-sm btn-primary">Edit</button>
                                             </form>
-                                            <form action="{{ url('generalusers/'.$user->id) }}" method="POST">
+                                            <form action="{{ url('user/'.$user->id) }}" method="POST">
                                              {{ csrf_field() }}
                                             {{ method_field('DELETE') }}
                                             <button type="submit" class="btn btn-sm btn-dark">削除</button>

@@ -32,11 +32,11 @@ Route::get('/generalusers', [App\Http\Controllers\HomeController::class, 'gulist
 //登録処理
 Route::post('/users',[App\Http\Controllers\HomeController::class, 'store']);
 //更新画面
-Route::get('/booksedit/{books}',[App\Http\Controllers\HomeController::class, 'edit']);
+Route::get('/usersedit/{users}',[App\Http\Controllers\HomeController::class, 'edit']);
 //更新処理
-Route::post('/books/update',[App\Http\Controllers\HomeController::class, 'update']);
+Route::post('/users/update',[App\Http\Controllers\HomeController::class, 'update']);
 //ユーザーを削除
-Route::delete('/book/{book}',[App\Http\Controllers\HomeController::class, 'destroy']);
+Route::delete('/user/{user}',[App\Http\Controllers\HomeController::class, 'destroy']);
 
 
 Route::get('/systemusers', [App\Http\Controllers\HomeController::class, 'syslist'])->name('sysuser');
