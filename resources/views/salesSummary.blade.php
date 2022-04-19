@@ -2,7 +2,7 @@
 
 @section('content')
 <h5>Sales  summary</h5>
-<div style="display:flex; flex-wrap: wrap; gap:10px;">
+<div style="display:flex; flex-wrap: wrap;">
 
                         <!-- Content Column -->
                         <div class="col-lg-6 mb-4">
@@ -26,7 +26,7 @@
 
                         </div>
 
-                        <div class="col-lg-5 mb-4">
+                        <div class="col-lg-6 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
