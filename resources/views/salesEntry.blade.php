@@ -22,7 +22,7 @@
              </div>
              <div class="form-group">
                  <div class="col-sm-6">store_org_code
-                     <input type="text" name="store_org_name" class="form-control" placeholder="ab1001">
+                     <input type="text" name="store_org_code" class="form-control" placeholder="ab1001">
                  </div>
              </div>
              <div class="form-group">
@@ -117,7 +117,7 @@
                                                 <div>{{ $sale->service_sales }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->sloyality }}</div>
+                                                <div>{{ $sale->loyality }}</div>
                                             </td>
                                             <td class="table-text">
                                                 <div>{{ $sale->goods_sales }}</div>
