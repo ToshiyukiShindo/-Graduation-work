@@ -2,7 +2,7 @@
 
 @section('content')
 <h5>Sales  summary</h5>
-<div style="display:flex; gap:10px;">
+<div style="display:flex; flex-wrap: wrap; gap:10px;">
 
                         <!-- Content Column -->
                         <div class="col-lg-6 mb-4">
@@ -26,7 +26,7 @@
 
                         </div>
 
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-lg-5 mb-4">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -70,5 +70,27 @@
                             </div>
 
                         </div>
+                        
+                         <div class="col-lg-6 mb-4">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">Sales total by store</h6>
+                                </div>
+                                <div class="card-body">
+                                @foreach ($storesales as $storesale)
+                                    <h4 class="small font-weight-bold">{{ $storesale->store_name }}<span
+                                            class="float-right">{{'¥ '.$storesale->sales_total }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: {{$storesale->sales_total/1000000*100}}%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                @endforeach
+                                </div>
+                            </div>
+
+                        </div>
+
 </div>
 @endsection
