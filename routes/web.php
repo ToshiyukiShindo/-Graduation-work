@@ -29,6 +29,8 @@ Route::get('/top', [App\Http\Controllers\HomeController::class, 'index2'])->name
 
 
 Route::get('/generalusers', [App\Http\Controllers\HomeController::class, 'gulist'])->name('genuser');
+Route::get('/generalusers/upload', [App\Http\Controllers\HomeController::class, 'practice2']);
+Route::post('/generalusers/upload', [App\Http\Controllers\HomeController::class, 'guup2']);
 //登録処理
 Route::post('/users',[App\Http\Controllers\HomeController::class, 'store']);
 //更新画面

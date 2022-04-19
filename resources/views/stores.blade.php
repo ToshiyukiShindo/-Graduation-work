@@ -1,11 +1,11 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>stores</h5>
+<h5>stores <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv" id="stentry">Entry data</a></h5>
 
      <!-- Bootstrapの定形コード… -->
      <div class="card-body">
-         <div class="card-title">
+         <div class="card-title hidden" id="sttitle">
              店舗登録
          </div>
          <!-- バリデーションエラーの表示に使用-->
@@ -15,18 +15,18 @@
          <form action="{{ url('stores') }}" method="POST" class="form-horizontal">
              {{ csrf_field() }}
              <!-- 本のタイトル -->
-             <div class="form-group">
+             <div class="form-group hidden" id="stgcode">
                  <div class="col-sm-6">{{'グループコード'}}
                      <input type="number" name="store_org_code" class="form-control">
                  </div>
              </div>
-             <div class="form-group">
+             <div class="form-group hidden" id="stname">
                  <div class="col-sm-6">{{'店舗名'}}
                      <input type="text" name="store_name" class="form-control">
                  </div>
              </div>
              <!-- 登録ボタン -->
-             <div class="form-group">
+             <div class="form-group hidden" id="stbtn">
                  <div class="col-sm-offset-3 col-sm-6">
                      <button type="submit" class="btn btn-primary">
                          Save
@@ -79,5 +79,6 @@
                         </div>
                     </div>
 
+<script src="{{ asset('js/store_entry_toggle.js')}}"></script>
 
 @endsection

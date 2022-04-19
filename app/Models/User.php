@@ -50,4 +50,7 @@ class User extends Authenticatable
         return $this->hasMany('App\Models\Post');
     }
     
+        //ブラックリスト方式
+    protected $guarded = ['id'];
+    
 }

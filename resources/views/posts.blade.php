@@ -46,7 +46,7 @@
                     <h6>投稿済みのお知らせ一覧</h6>
                     <p></p>
                     <thead>
-                        <th>UserID</th>
+                        <th>PostID</th>
                         <th>title</th>
                         <th>本文</th>
                         <th>配信日時</th>

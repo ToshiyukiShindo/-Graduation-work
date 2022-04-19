@@ -1,11 +1,11 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>general users</h5>
+<h5>general users <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv" id="guentry">Entry data</a></h5>
 
      <!-- Bootstrapの定形コード… -->
      <div class="card-body">
-         <div class="card-title">
+         <div class="card-title hidden" id="gutitle">
              ユーザー登録
          </div>
          <!-- バリデーションエラーの表示に使用-->
@@ -15,33 +15,33 @@
          <form action="{{ url('users') }}" method="POST" class="form-horizontal">
              {{ csrf_field() }}
              <!-- 本のタイトル -->
-             <div class="form-group">
+             <div class="form-group hidden" id="guname">
                  <div class="col-sm-6">Name
                      <input type="text" name="name" class="form-control">
                  </div>
              </div>
-             <div class="form-group">
+             <div class="form-group hidden" id="guemail">
                  <div class="col-sm-6">email
                      <input type="text" name="email" class="form-control">
                  </div>
              </div>
-             <div class="form-group">
+             <div class="form-group hidden" id="gupermission">
                  <div class="col-sm-6">permission
                      <input type="number" name="permission" class="form-control">
                  </div>
              </div>
-             <div class="form-group">
+             <div class="form-group hidden" id="guorg">
                  <div class="col-sm-6">org
-                     <input type="text" name="org" class="form-control">
+                    <input type="text" name="org" class="form-control">
                  </div>
              </div>
-             <div class="form-group">
+             <div class="form-group hidden" id="gupassword">
                  <div class="col-sm-6">password
                      <input type="password" name="password" class="form-control">
                  </div>
              </div>
              <!-- 本 登録ボタン -->
-             <div class="form-group">
+             <div class="form-group hidden" id="gubtn">
                  <div class="col-sm-offset-3 col-sm-6">
                      <button type="submit" class="btn btn-sm btn-primary">
                          Save
@@ -49,7 +49,26 @@
                  </div>
              </div>
          </form>
+         
+    <!-- <div class="upload hidden" id="gucsv">-->
+    <!--    <p>DBに追加したいCSVデータを選択してください。</p>-->
+    <!--<form action="" method="post" enctype="multipart/form-data">-->
+    <!--    <div class="row">-->
+    <!--        <label class="col-1 text-right" for="form-file-1">File:</label>-->
+    <!--        <div class="col-11">-->
+    <!--            <div class="custom-file">-->
+    <!--                <input type="file" name="csv" class="custom-file-input" id="customFile">-->
+    <!--                <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>-->
+    <!--            </div>-->
+    <!--        </div>-->
+    <!--    </div>-->
+    <!--    <button type="submit" class="btn btn-sm btn-primary">送信</button>-->
+    <!--</form>-->
+    <!--</div>-->
+
      </div>
+    
+
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">
@@ -102,5 +121,6 @@
                         </div>
                     </div>
 
+<script src="{{ asset('js/entry_toggle.js')}}"></script>
 
 @endsection

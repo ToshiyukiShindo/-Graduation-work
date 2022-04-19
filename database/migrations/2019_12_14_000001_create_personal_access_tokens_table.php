@@ -13,7 +13,23 @@ return new class extends Migration
      */
     public function up()
     {
-        Schema::create('personal_access_tokens', function (Blueprint $table) {
+        if (Schema::hasTable('users')) {
+            // テーブルが存在していればリターン
+            return;
+        };
+        if (Schema::hasTable('password_resets')) {
+            // テーブルが存在していればリターン
+            return;
+        };
+        if (Schema::hasTable('failed_jobs')) {
+            // テーブルが存在していればリターン
+            return;
+        };
+        if (Schema::hasTable('personal_access_tokens')) {
+            // テーブルが存在していればリターン
+            return;
+        };
+       Schema::create('personal_access_tokens', function (Blueprint $table) {
             $table->id();
             $table->morphs('tokenable');
             $table->string('name');

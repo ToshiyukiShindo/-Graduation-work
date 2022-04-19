@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post; //この行を上に追加
+use App\Models\Store; //この行を上に追加
 use Validator;
 use App\Http\Controllers\HomeController;//追記
 use Illuminate\Support\Facades\Hash;
@@ -19,6 +20,7 @@ class HomeController extends Controller
     public function __construct()
     {
         $this->middleware('auth');
+
     }
 
     /**
@@ -41,7 +43,11 @@ class HomeController extends Controller
     {
         $users = User::where('permission',0)->get();
         return view('genuser',compact('users'));
-    }
+            }
+    
+    public function guup(Request $request) {
+        //
+  }
     
         public function syslist()
     {
