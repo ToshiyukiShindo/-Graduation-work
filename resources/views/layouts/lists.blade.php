@@ -76,7 +76,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Summary</a>
+                        <a class="collapse-item" href="/salessummary">Summary</a>
                         <a class="collapse-item" href="/salesentry">Sales Entry</a>
                     </div>
                 </div>
@@ -270,6 +270,8 @@
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/datatables-demo.js')}}"></script>
     <script src="{{ asset('js/reportcsv.js')}}"></script>
+    
+    <script src="{{ asset('js/chart-bar-demo.js')}}"></script>
     
 
 </body>

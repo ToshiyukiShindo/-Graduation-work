@@ -25,10 +25,3 @@ guentry.addEventListener('click',()=>{
    gubtn.classList.toggle('hidden'); 
    gucsv.classList.toggle('hidden'); 
 });
-
-stentry.addEventListener('click',()=>{
-   sttitle.classList.toggle('hidden'); 
-   stgcode.classList.toggle('hidden'); 
-   stname.classList.toggle('hidden'); 
-   stbtn.classList.toggle('hidden'); 
-});

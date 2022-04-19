@@ -75,7 +75,7 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">Summary</a>
+                        <a class="collapse-item" href="/salessummary">Summary</a>
                         <a class="collapse-item" href="/salesentry">Sales entry</a>
                     </div>
                 </div>
@@ -254,7 +254,7 @@
     <script src="{{ asset('js/sb-admin-2.min.js')}}"></script>
 
     <!-- Page level plugins -->
-    <script src="{{ asset('js/chart.js/Chart.min.js')}}"></script>
+    <script src="{{ asset('js/Chart.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
     <script src="{{ asset('js/chart-area-demo.js')}}"></script>
@@ -265,7 +265,8 @@
     <script src="{{ asset('js/dataTables.bootstrap4.min.js')}}"></script>
 
     <!-- Page level custom scripts -->
-    <script src="{{ asset('js/demo/datatables-demo.js')}}"></script>
+    <script src="{{ asset('js/datatables-demo.js')}}"></script>
+    <script src="{{ asset('js/chart-bar-demo.js')}}"></script>
 
 
 

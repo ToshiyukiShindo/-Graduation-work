@@ -18,6 +18,18 @@ class SalesController extends Controller
     {
         return view('salesEntry');
     }
+    public function index2()
+    {
+        $termsales = Sale::select('term')
+        ->selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_total')
+        ->groupBy('term')
+        ->get();
+        $servicesales = Sale::selectRaw('SUM(service_sales) as service_sales')->get();
+        $loyalitys = Sale::selectRaw('SUM(loyality) as loyality')->get();
+        $goodssales = Sale::selectRaw('SUM(goods_sales) as goods_sales')->get();
+        $othersales = Sale::selectRaw('SUM(other_sales) as other_sales')->get();
+        return view('salesSummary',compact('servicesales','loyalitys','goodssales','othersales','termsales'));
+    }
 
     /**
      * Show the form for creating a new resource.

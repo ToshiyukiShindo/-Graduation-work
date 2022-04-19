@@ -70,3 +70,7 @@ Route::get('/salessedit/{sales}',[SalesController::class, 'edit']);
 Route::post('/sales/update',[SalesController::class, 'update']);
 //salesを削除
 Route::delete('/sale/{sale}',[SalesController::class, 'destroy']);
+
+
+//salessummary
+Route::get('/salessummary', [SalesController::class, 'index2'])->name('salesSummary');
