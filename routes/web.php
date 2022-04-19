@@ -3,6 +3,7 @@
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;//追記
 use App\Http\Controllers\PostsController;//追記
+use App\Http\Controllers\SalesController;//追記
 use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoresController;//
@@ -58,3 +59,14 @@ Route::get('/storesedit/{stores}',[StoresController::class, 'edit']);
 Route::post('/stores/update',[StoresController::class, 'update']);
 //本を削除
 Route::delete('/store/{store}',[StoresController::class, 'destroy']);
+
+Route::get('/salesentry', [SalesController::class, 'index'])->name('salesEntry');
+Route::get('/salesentry', [SalesController::class, 'show']);
+//sales登録処理
+Route::post('/sales',[SalesController::class, 'store']);
+//sales更新画面
+Route::get('/salessedit/{sales}',[SalesController::class, 'edit']);
+//sales更新処理
+Route::post('/sales/update',[SalesController::class, 'update']);
+//salesを削除
+Route::delete('/sale/{sale}',[SalesController::class, 'destroy']);

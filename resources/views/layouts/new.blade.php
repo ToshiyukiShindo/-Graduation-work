@@ -75,8 +75,8 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="#">All stores</a>
-                        <a class="collapse-item" href="#">Each store</a>
+                        <a class="collapse-item" href="#">List</a>
+                        <a class="collapse-item" href="/salesentry">Sales entry</a>
                     </div>
                 </div>
             </li>
