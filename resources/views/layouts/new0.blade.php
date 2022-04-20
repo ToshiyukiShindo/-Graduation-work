@@ -104,14 +104,14 @@
                     <span>Admin</span></a>
             </li>
             @else
-            <li class="nav-item">
+            <li class="nav-item hidden">
                 <a class="nav-link" href="#">
                     <span>Admin</span></a>
             </li>
             @endif
 
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block">
+            <hr class="sidebar-divider d-none d-md-block mt-2">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -213,7 +213,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Bridges partners 2022</span>
                     </div>
                 </div>
             </footer>

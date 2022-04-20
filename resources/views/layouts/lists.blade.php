@@ -105,7 +105,7 @@
                     <span>管理者画面</span></a>
             </li>
             @else
-            <li class="nav-item">
+            <li class="nav-item hidden">
                 <a class="nav-link text-gray" href="#">
                     <span>管理者画面</span></a>
             </li>
@@ -215,7 +215,7 @@
             <footer class="sticky-footer bg-white">
                 <div class="container my-auto">
                     <div class="copyright text-center my-auto">
-                        <span>Copyright &copy; Your Website 2021</span>
+                        <span>Copyright &copy; Bridges partners 2022</span>
                     </div>
                 </div>
             </footer>
