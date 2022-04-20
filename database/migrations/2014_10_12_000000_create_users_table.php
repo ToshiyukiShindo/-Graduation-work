@@ -37,7 +37,7 @@ return new class extends Migration
             $table->string('password');
             $table->rememberToken();
             $table->integer('permission')->nullable(false)->default('0');
-            $table->string('org')->nullable();
+            $table->string('org')->nullable()->default('sugamo');
             $table->timestamps();
         });
     }

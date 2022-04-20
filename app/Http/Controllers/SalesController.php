@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Sale;
+use App\Models\User;
+use App\Models\Store;
 use Validator;
 use App\Http\Controllers\HomeController;//追記
 
@@ -80,7 +82,7 @@ class SalesController extends Controller
         
         //バリデーション:エラー 
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/top')
         ->withInput()
         ->withErrors($validator);
         }
@@ -98,6 +100,33 @@ class SalesController extends Controller
          
          return redirect('/salesentry');
     }
+    public function store0(Request $request)
+    {
+                //バリデーション 
+        $validator = Validator::make($request->all(), [
+            'service_sales' => 'required|max:255',
+        ]);
+        
+        //バリデーション:エラー 
+        if ($validator->fails()) {
+        return redirect('/home')
+        ->withInput()
+        ->withErrors($validator);
+        }
+        
+      // Eloquent モデル
+         $sales = new Sale;
+         $sales->term = $request->term;
+         $sales->store_org_code = $request->store_org_code;
+         $sales->store_name = $request->store_name;
+         $sales->service_sales = $request->service_sales;
+         $sales->loyality = $request->loyality;
+         $sales->goods_sales = $request->goods_sales;
+         $sales->other_sales = $request->other_sales;
+         $sales->save(); 
+         
+         return redirect('/salesentry0');
+    }
 
     /**
      * Display the specified resource.
@@ -108,13 +137,15 @@ class SalesController extends Controller
     public function show()
     {
         $sales = Sale::get();
-        return view('salesEntry',compact('sales'));
+        $stores = Store::where('id','!=','1')->get();
+        return view('salesEntry',compact('sales','stores'));
 
     }
     public function show0()
     {
         $sales = Sale::get();
-        return view('salesEntry0',compact('sales'));
+        $orgsales = Sale::where('store_name',\Auth::user()->org)->get();
+        return view('salesEntry0',compact('sales','orgsales'));
 
     }
 
@@ -147,8 +178,10 @@ class SalesController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(Sale $sale)
     {
-        //
+             $sale->delete();       //追加
+             return redirect('/salesentry');  //追加
+
     }
 }

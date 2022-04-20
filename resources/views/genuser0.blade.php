@@ -12,7 +12,7 @@
      	@include('common.errors')
          <!-- バリデーションエラーの表示に使用-->
          <!-- 本登録フォーム -->
-         <form action="{{ url('users') }}" method="POST" class="form-horizontal">
+         <form action="{{ url('users0') }}" method="POST" class="form-horizontal">
              {{ csrf_field() }}
              <!-- 本のタイトル -->
              <div class="form-group hidden" id="guname">
@@ -86,28 +86,28 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($users as $user)
+                                        @foreach ($orgusers as $orguser)
                                         <tr>
                                             <td class="table-text">
-                                                <div>{{ $user->id }}</div>
+                                                <div>{{ $orguser->id }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $user->name }}</div>
+                                                <div>{{ $orguser->name }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $user->email }}</div>
+                                                <div>{{ $orguser->email }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $user->permission }}</div>
+                                                <div>{{ $orguser->permission }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $user->org }}</div>
+                                                <div>{{ $orguser->org }}</div>
                                             </td>
                                             <!--<td style="display:flex; gap:10px;">-->
-                                            <!--<form action="{{ url('usersedit/'.$user->id) }}" method="GET" name="id"> {{ csrf_field() }}-->
+                                            <!--<form action="{{ url('usersedit/'.$orguser->id) }}" method="GET" name="id"> {{ csrf_field() }}-->
                                             <!--    <button type="submit" class="btn btn-sm btn-primary">Edit</button>-->
                                             <!--</form>-->
-                                            <!--<form action="{{ url('user/'.$user->id) }}" method="POST">-->
+                                            <!--<form action="{{ url('user/'.$orguser->id) }}" method="POST">-->
                                             <!-- {{ csrf_field() }}-->
                                             <!--{{ method_field('DELETE') }}-->
                                             <!--<button type="submit" class="btn btn-sm btn-dark">削除</button>-->

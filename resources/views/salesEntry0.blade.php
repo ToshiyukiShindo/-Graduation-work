@@ -12,7 +12,7 @@
      	@include('common.errors')
          <!-- バリデーションエラーの表示に使用-->
          <!-- 本登録フォーム -->
-         <form action="{{ url('sales') }}" method="POST" class="form-horizontal">
+         <form action="{{ url('sales0') }}" method="POST" class="form-horizontal">
              {{ csrf_field() }}
              <!-- 本のタイトル -->
              <div class="form-group" id="salesterm">
@@ -25,9 +25,9 @@
                      <input type="text" name="store_org_code" class="form-control" placeholder="ab1001">
                  </div>
              </div>
-             <div class="form-group" id="salesstname">
+             <div class="form-group hidden" id="salesstname">
                  <div class="col-sm-6">store_name
-                     <input type="text" name="store_name" class="form-control" placeholder="sugamo">
+                     <input type="text" name="store_name" class="form-control" placeholder="sugamo" value="{{ Auth::user()->org }}">
                  </div>
              </div>
              <div class="form-group"  id="salesss">
@@ -99,37 +99,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
-                                        @foreach ($sales as $sale)
+                                        @foreach ($orgsales as $orgsale)
                                         <tr>
                                             <td class="table-text">
-                                                <div>{{ $sale->id }}</div>
+                                                <div>{{ $orgsale->id }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->term }}</div>
+                                                <div>{{ $orgsale->term }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->store_org_code }}</div>
+                                                <div>{{ $orgsale->store_org_code }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->store_name }}</div>
+                                                <div>{{ $orgsale->store_name }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->service_sales }}</div>
+                                                <div>{{ $orgsale->service_sales }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->loyality }}</div>
+                                                <div>{{ $orgsale->loyality }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->goods_sales }}</div>
+                                                <div>{{ $orgsale->goods_sales }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $sale->other_sales }}</div>
+                                                <div>{{ $orgsale->other_sales }}</div>
                                             </td>
                                         <!--    <td style="display:flex; gap:10px;">-->
-                                        <!--    <form action="{{ url('salesedit/'.$sale->id) }}" method="GET" name="id"> {{ csrf_field() }}-->
+                                        <!--    <form action="{{ url('salesedit/'.$orgsale->id) }}" method="GET" name="id"> {{ csrf_field() }}-->
                                         <!--        <button type="submit" class="btn btn-sm btn-primary">Edit</button>-->
                                         <!--    </form>-->
-                                        <!--    <form action="{{ url('sale/'.$sale->id) }}" method="POST">-->
+                                        <!--    <form action="{{ url('sale/'.$orgsale->id) }}" method="POST">-->
                                         <!--     {{ csrf_field() }}-->
                                         <!--    {{ method_field('DELETE') }}-->
                                         <!--    <button type="submit" class="btn btn-sm btn-dark">削除</button>-->
@@ -143,7 +143,7 @@
                         </div>
                     </div>
 
-<script src="{{ asset('js/sales_entry_toggle.js')}}"></script>
+<script src="{{ asset('js/sales_entry_toggle0.js')}}"></script>
 
 
 

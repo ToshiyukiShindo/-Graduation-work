@@ -28,6 +28,9 @@ class AuthServiceProvider extends ServiceProvider
         Gate::define('premier-only',function($user){
             return($user->permission == 1);
         });
+        Gate::define('ordinary',function($user){
+            return($user->permission == 0);
+        });
 
         //
     }

@@ -71,12 +71,14 @@ class HomeController extends Controller
     public function gulist()
     {
         $users = User::where('permission',0)->get();
-        return view('genuser',compact('users'));
+        $stores = Store::get();
+        return view('genuser',compact('users','stores'));
             }
     public function gulist0()
     {
         $users = User::where('permission',0)->get();
-        return view('genuser0',compact('users'));
+        $orgusers = User::where('permission',0)->where('org',\Auth::user()->org)->get();
+        return view('genuser0',compact('users','orgusers'));
             }
     
     public function guup(Request $request) {
@@ -114,7 +116,7 @@ class HomeController extends Controller
         
         //バリデーション:エラー 
         if ($validator->fails()) {
-        return redirect('/home')
+        return redirect('/top')
         ->withInput()
         ->withErrors($validator);
         }
@@ -162,7 +164,7 @@ class HomeController extends Controller
      * @param  int  $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show()
     {
         //
     }
@@ -178,6 +180,7 @@ class HomeController extends Controller
         return view('usersedit',[
             'user'=>$user
         ]);
+
     }
 
     /**

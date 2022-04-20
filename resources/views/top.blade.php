@@ -17,7 +17,7 @@
                 @foreach ($posts as $post)
                 <div class="mb-4">
                         <div>
-                            <div><h6>{{ $post->post_title }}</h5></div>
+                            <div><h6 style="font-weight:bold;">{{ $post->post_title }}</h6></div>
                             <div><p style="font-size:14px;">{{'配信日時.   '}}{{ $post->updated_at }}</p></div>
                         </div>
                         <p style="font-size:16px;">{{ $post->post_desc }}</p>
