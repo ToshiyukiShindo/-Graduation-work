@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Models\User;
 use App\Models\Post; //この行を上に追加
 use App\Models\Store; //この行を上に追加
+use App\Models\Sale;
 use Validator;
 use App\Http\Controllers\HomeController;//追記
 use Illuminate\Support\Facades\Hash;
@@ -35,8 +36,20 @@ class HomeController extends Controller
     
     public function index2()
     {
+        $date = date_create() ;
+        $date = date_format($date , 'Y-m');
+        $year = date_create() ;
+        $year = date_format($year , 'Y');
+        $total_thismonth_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_mtotal')
+        ->where('term',$date)->get();
+        $total_thisyear_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_ytotal')
+        ->where('term','LIKE',$year.'%')->get();
+        $counts = Sale::select('term')
+        ->selectRaw('COUNT(id) as count_records')
+        ->groupBy('term')
+        ->get();
         $posts = Post::latest('updated_at')->take(2)->get();
-        return view('top',compact('posts'));
+        return view('top',compact('posts','date','year','total_thismonth_sales','total_thisyear_sales','counts'));
     }
     
     public function gulist()
