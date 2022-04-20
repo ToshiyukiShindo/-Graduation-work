@@ -31,7 +31,22 @@ class HomeController extends Controller
      */
     public function index()
     {
-        return view('home');
+        $date = date_create() ;
+        $date = date_format($date , 'Y-m');
+        $year = date_create() ;
+        $year = date_format($year , 'Y');
+        $total_thismonth_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_mtotal')
+        ->where('term',$date)->get();
+        $total_thisyear_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_ytotal')
+        ->where('term','LIKE',$year.'%')->get();
+        $counts = Sale::select('term')
+        ->selectRaw('COUNT(id) as count_records')
+        ->where('created_at','LIKE',$date.'%')
+        ->groupBy('term')
+        ->get();
+        $posts = Post::latest('updated_at')->take(2)->get();
+        return view('top0',compact('posts','date','year','total_thismonth_sales','total_thisyear_sales','counts'));
+
     }
     
     public function index2()
@@ -57,6 +72,11 @@ class HomeController extends Controller
     {
         $users = User::where('permission',0)->get();
         return view('genuser',compact('users'));
+            }
+    public function gulist0()
+    {
+        $users = User::where('permission',0)->get();
+        return view('genuser0',compact('users'));
             }
     
     public function guup(Request $request) {
@@ -109,6 +129,31 @@ class HomeController extends Controller
          $users->save(); 
          
          return redirect('/generalusers');
+    }
+    public function store0(Request $request)
+    {
+                //バリデーション
+        $validator = Validator::make($request->all(), [
+        'name' => 'required|max:255',
+        ]);
+        
+        //バリデーション:エラー 
+        if ($validator->fails()) {
+        return redirect('/home')
+        ->withInput()
+        ->withErrors($validator);
+        }
+        
+         // Eloquent モデル
+         $users = new User;
+         $users->name = $request->name;
+         $users->email = $request->email;
+         $users->permission = $request->permission;
+         $users->org = $request->org;
+         $users->password = Hash::make($request->password);
+         $users->save(); 
+         
+         return redirect('/generalusers0');
     }
 
     /**

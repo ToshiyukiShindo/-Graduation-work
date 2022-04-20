@@ -25,15 +25,22 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('top');
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('top0');
+Route::group(['middleware' => ['auth', 'can:premier-only']], function () {
+   //ここに書いたルーティングは全てプレミア会員のみアクセスできる
 Route::get('/top', [App\Http\Controllers\HomeController::class, 'index2'])->name('top');
+});
 
 
 Route::get('/generalusers', [App\Http\Controllers\HomeController::class, 'gulist'])->name('genuser');
+Route::get('/generalusers0', [App\Http\Controllers\HomeController::class, 'gulist0'])->name('genuser0');
 Route::get('/generalusers/upload', [App\Http\Controllers\HomeController::class, 'practice2']);
 Route::post('/generalusers/upload', [App\Http\Controllers\HomeController::class, 'guup2']);
 //登録処理
+Route::group(['middleware' => ['auth', 'can:premier-only']], function () {
 Route::post('/users',[App\Http\Controllers\HomeController::class, 'store']);
+});
+Route::post('/users',[App\Http\Controllers\HomeController::class, 'store0']);
 //更新画面
 Route::get('/usersedit/{users}',[App\Http\Controllers\HomeController::class, 'edit']);
 //更新処理
@@ -62,6 +69,8 @@ Route::delete('/store/{store}',[StoresController::class, 'destroy']);
 
 Route::get('/salesentry', [SalesController::class, 'index'])->name('salesEntry');
 Route::get('/salesentry', [SalesController::class, 'show']);
+Route::get('/salesentry0', [SalesController::class, 'index0'])->name('salesEntry0');
+Route::get('/salesentry0', [SalesController::class, 'show0']);
 //sales登録処理
 Route::post('/sales',[SalesController::class, 'store']);
 //sales更新画面
@@ -74,3 +83,4 @@ Route::delete('/sale/{sale}',[SalesController::class, 'destroy']);
 
 //salessummary
 Route::get('/salessummary', [SalesController::class, 'index2'])->name('salesSummary');
+Route::get('/salessummary0', [SalesController::class, 'index20'])->name('salesSummary0');

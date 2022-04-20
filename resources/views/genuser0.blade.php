@@ -1,4 +1,4 @@
-@extends('layouts.lists')
+@extends('layouts.lists0')
 
 @section('content')
 <h5>general users <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv" id="guentry">Entry data</a></h5>
@@ -82,7 +82,7 @@
                                             <th>email</th>
                                             <th>permission</th>
                                             <th>org</th>
-                                            <th colspan="2">操作</th>
+                                            <!--<th colspan="2">操作</th>-->
                                         </tr>
                                     </thead>
                                     <tbody>
@@ -103,16 +103,16 @@
                                             <td class="table-text">
                                                 <div>{{ $user->org }}</div>
                                             </td>
-                                            <td style="display:flex; gap:10px;">
-                                            <form action="{{ url('usersedit/'.$user->id) }}" method="GET" name="id"> {{ csrf_field() }}
-                                                <button type="submit" class="btn btn-sm btn-primary">Edit</button>
-                                            </form>
-                                            <form action="{{ url('user/'.$user->id) }}" method="POST">
-                                             {{ csrf_field() }}
-                                            {{ method_field('DELETE') }}
-                                            <button type="submit" class="btn btn-sm btn-dark">削除</button>
-                                            </form>
-                                            </td>
+                                            <!--<td style="display:flex; gap:10px;">-->
+                                            <!--<form action="{{ url('usersedit/'.$user->id) }}" method="GET" name="id"> {{ csrf_field() }}-->
+                                            <!--    <button type="submit" class="btn btn-sm btn-primary">Edit</button>-->
+                                            <!--</form>-->
+                                            <!--<form action="{{ url('user/'.$user->id) }}" method="POST">-->
+                                            <!-- {{ csrf_field() }}-->
+                                            <!--{{ method_field('DELETE') }}-->
+                                            <!--<button type="submit" class="btn btn-sm btn-dark">削除</button>-->
+                                            <!--</form>-->
+                                            <!--</td>-->
                                         </tr>
                                         @endforeach
                                     </tbody>
@@ -121,6 +121,6 @@
                         </div>
                     </div>
 
-<script src="{{ asset('js/entry_toggle.js')}}"></script>
+<script src="{{ asset('js/entry_toggle0.js')}}"></script>
 
 @endsection

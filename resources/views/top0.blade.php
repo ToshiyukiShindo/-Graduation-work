@@ -1,4 +1,4 @@
-@extends('layouts.new')
+@extends('layouts.new0')
 
 @section('content')
 <div class="container d-flex flex-row" style="gap:20px">

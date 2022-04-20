@@ -18,6 +18,10 @@ class SalesController extends Controller
     {
         return view('salesEntry');
     }
+    public function index0()
+    {
+        return view('/salesEntry0');
+    }
     public function index2()
     {
         $termsales = Sale::select('term')
@@ -33,6 +37,22 @@ class SalesController extends Controller
         $goodssales = Sale::selectRaw('SUM(goods_sales) as goods_sales')->get();
         $othersales = Sale::selectRaw('SUM(other_sales) as other_sales')->get();
         return view('salesSummary',compact('servicesales','loyalitys','goodssales','othersales','termsales','storesales'));
+    }
+    public function index20()
+    {
+        $termsales = Sale::select('term')
+        ->selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_total')
+        ->groupBy('term')
+        ->get();
+        $storesales = Sale::select('store_name')
+        ->selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_total')
+        ->groupBy('store_name')
+        ->get();
+        $servicesales = Sale::selectRaw('SUM(service_sales) as service_sales')->get();
+        $loyalitys = Sale::selectRaw('SUM(loyality) as loyality')->get();
+        $goodssales = Sale::selectRaw('SUM(goods_sales) as goods_sales')->get();
+        $othersales = Sale::selectRaw('SUM(other_sales) as other_sales')->get();
+        return view('salesSummary0',compact('servicesales','loyalitys','goodssales','othersales','termsales','storesales'));
     }
 
     /**
@@ -89,6 +109,12 @@ class SalesController extends Controller
     {
         $sales = Sale::get();
         return view('salesEntry',compact('sales'));
+
+    }
+    public function show0()
+    {
+        $sales = Sale::get();
+        return view('salesEntry0',compact('sales'));
 
     }
 
