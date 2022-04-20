@@ -78,7 +78,8 @@ class HomeController extends Controller
     {
         $users = User::where('permission',0)->get();
         $orgusers = User::where('permission',0)->where('org',\Auth::user()->org)->get();
-        return view('genuser0',compact('users','orgusers'));
+        $stores = Store::get();
+        return view('genuser0',compact('users','orgusers','stores'));
             }
     
     public function guup(Request $request) {
