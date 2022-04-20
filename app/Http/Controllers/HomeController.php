@@ -46,6 +46,7 @@ class HomeController extends Controller
         ->where('term','LIKE',$year.'%')->get();
         $counts = Sale::select('term')
         ->selectRaw('COUNT(id) as count_records')
+        ->where('created_at','LIKE',$date.'%')
         ->groupBy('term')
         ->get();
         $posts = Post::latest('updated_at')->take(2)->get();
