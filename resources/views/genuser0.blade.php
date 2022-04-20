@@ -32,11 +32,7 @@
              </div>
              <div class="form-group hidden" id="guorg">
                  <div class="col-sm-6">org
-                    <select class="form-control mb-2">
-                    @foreach ($stores as $store)
-                        <option value="{{ $store->id }}">{{ $store->store_name }}</option>
-                    @endforeach
-                    </select>
+                     <input type="text" name="org" class="form-control" value="{{ Auth::user()->org }}">
                  </div>
              </div>
              <div class="form-group hidden" id="gupassword">

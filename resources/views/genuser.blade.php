@@ -34,7 +34,7 @@
                  <div class="col-sm-6">org
                     <select class="form-control mb-2">
                     @foreach ($stores as $store)
-                        <option value="{{ $store->id }}">{{ $store->store_name }}</option>
+                        <option value="{{ $store->store_name }}">{{ $store->store_name }}</option>
                     @endforeach
                     </select>
                  </div>

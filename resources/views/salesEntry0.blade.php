@@ -25,7 +25,7 @@
                      <input type="text" name="store_org_code" class="form-control" placeholder="ab1001">
                  </div>
              </div>
-             <div class="form-group hidden" id="salesstname">
+             <div class="form-group" id="salesstname">
                  <div class="col-sm-6">store_name
                      <input type="text" name="store_name" class="form-control" placeholder="sugamo" value="{{ Auth::user()->org }}">
                  </div>

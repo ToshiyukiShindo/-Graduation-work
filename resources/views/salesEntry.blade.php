@@ -27,11 +27,7 @@
              </div>
              <div class="form-group" id="salesstname">
                  <div class="col-sm-6">store_name
-                    <select class="form-control mb-2">
-                        @foreach ($stores as $store)
-                            <option value="{{ $store->id }}">{{ $store->store_name }}</option>
-                        @endforeach
-                    </select>
+                     <input type="text" name="store_name" class="form-control" placeholder="sugamo" value="{{ Auth::user()->org }}">
                  </div>
              </div>
              <div class="form-group"  id="salesss">
