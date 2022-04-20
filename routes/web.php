@@ -25,9 +25,8 @@ Route::get('/', function () {
 
 Auth::routes();
 
-Route::group(['middleware' => ['auth', 'can:ordinary']], function () {
+
 Route::get('/home0', [App\Http\Controllers\HomeController::class, 'index'])->name('top0');
-});
 Route::group(['middleware' => ['auth', 'can:premier-only']], function () {
    //ここに書いたルーティングは全てプレミア会員のみアクセスできる
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index2'])->name('top');

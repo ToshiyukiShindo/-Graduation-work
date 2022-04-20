@@ -98,10 +98,18 @@
 
 
             <!-- Nav Item - Tables -->
+            @if(Auth::user()->permission == '1')
             <li class="nav-item">
                 <a class="nav-link" href="/home">
-                    <span>Settings</span></a>
+                    <span>Admin</span></a>
             </li>
+            @else
+            <li class="nav-item">
+                <a class="nav-link text-gray" href="#">
+                    <span>Admin</span></a>
+            </li>
+            @endif
+            
 
             <!-- Divider -->
             <hr class="sidebar-divider d-none d-md-block">

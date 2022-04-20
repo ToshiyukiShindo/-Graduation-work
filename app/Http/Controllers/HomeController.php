@@ -51,6 +51,7 @@ class HomeController extends Controller
     
     public function index2()
     {
+        $users = User::get();
         $date = date_create() ;
         $date = date_format($date , 'Y-m');
         $year = date_create() ;
@@ -65,7 +66,7 @@ class HomeController extends Controller
         ->groupBy('term')
         ->get();
         $posts = Post::latest('updated_at')->take(2)->get();
-        return view('top',compact('posts','date','year','total_thismonth_sales','total_thisyear_sales','counts'));
+        return view('top',compact('users','posts','date','year','total_thismonth_sales','total_thisyear_sales','counts'));
     }
     
     public function gulist()
