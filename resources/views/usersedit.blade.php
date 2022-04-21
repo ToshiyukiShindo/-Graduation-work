@@ -5,23 +5,24 @@
     @include('common.errors')
         <form action="{{ url('users/update') }}" method="POST">
             <!-- item_name -->
+            @foreach($tests as $test)
             <div class="form-group">
                 <label for="name">name</label>
-                <input type="text" name="name" class="form-control" value="{{$user->name}}">
+                <input type="text" name="name" class="form-control" value="{{$test->name}}">
             </div>
             <div class="form-group">
                 <label for="email">email</label>
-                <input type="email" name="email" class="form-control" value="{{$user->email}}">
+                <input type="email" name="email" class="form-control" value="{{$test->email}}">
             </div>
             <div class="form-group">
                 <label for="permission">permission</label>
-                <input type="number" name="permission" class="form-control" value="{{$user->permission}}">
+                <input type="number" name="permission" class="form-control" value="{{$test->parmission}}">
             </div>
             <div class="form-group">
                 <label for="org">org</label>
-                <input type="text" name="org" class="form-control" value="{{$user->org}}">
+                <input type="text" name="org" class="form-control" value="{{$test->org}}">
             </div>
-
+            @endforeach
 
             <!-- Save ボタン/Back ボタン -->
             <div class="well well-sm">
@@ -30,7 +31,7 @@
             </div>
             <!--/ Save ボタン/Back ボタン -->
             <!-- id 値を送信 -->
-            <input type="hidden" name="id" value="{{$user->id}}" /> <!--/ id 値を送信 -->
+            <input type="hidden" name="id" value="{{$test->id}}" /> <!--/ id 値を送信 -->
             <!-- CSRF -->
             {{ csrf_field() }}
             <!--/ CSRF -->

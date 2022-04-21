@@ -179,9 +179,12 @@ class HomeController extends Controller
      */
     public function edit(User $user)
     {
-        return view('usersedit',[
-            'user'=>$user
-        ]);
+        $id = $user->id;
+        $tests = User::where('id',$id)->get();
+        return view('usersedit',compact('id','tests'));
+        // return view('usersedit',[
+        //     'user'=>$user
+        // ]);
 
     }
 
@@ -205,9 +208,14 @@ class HomeController extends Controller
             ->withErrors($validator);
     }
     // Eloquent モデル
-    $users = User::find($request->id);
-    $users->save(); 
-    return redirect('/users');
+    $user = User::where('id',$request->id)->update(
+    [
+    $user->name = $request->name,
+    $user->email = $request->email,
+    $user->permission = $request->permission,
+    $user->org = $request->org,
+    ]);
+    return redirect('/generalusers');
 }
     /**
      * Remove the specified resource from storage.

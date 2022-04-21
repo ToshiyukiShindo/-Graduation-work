@@ -47,8 +47,11 @@
                                                 <div>{{ $user->org }}</div>
                                             </td>
                                             <td>
-                                            <a href="/generalusers" class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm">Edit</a>
+                                            <form action="{{ url('usersedit/'.$user->id) }}" method="GET" name="id"> {{ csrf_field() }}
+                                                <button type="submit" class="btn btn-sm btn-primary">Edit</button>
+                                            </form>
                                             </td>
+                                            
                                         </tr>
                                         @endforeach
                                     </tbody>

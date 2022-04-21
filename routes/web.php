@@ -45,7 +45,7 @@ Route::group(['middleware' => ['auth', 'can:ordinary']], function () {
 Route::post('/users0',[App\Http\Controllers\HomeController::class, 'store0']);
 });
 //更新画面
-Route::get('/usersedit/{users}',[App\Http\Controllers\HomeController::class, 'edit']);
+Route::get('/usersedit/{user}',[App\Http\Controllers\HomeController::class, 'edit']);
 //更新処理
 Route::post('/users/update',[App\Http\Controllers\HomeController::class, 'update']);
 //ユーザーを削除
