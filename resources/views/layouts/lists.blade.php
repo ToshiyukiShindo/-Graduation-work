@@ -102,12 +102,12 @@
             @if(Auth::user()->permission == '1')
             <li class="nav-item">
                 <a class="nav-link" href="/home">
-                    <span>管理者画面</span></a>
+                    <span>Admin</span></a>
             </li>
             @else
             <li class="nav-item hidden">
                 <a class="nav-link text-gray" href="#">
-                    <span>管理者画面</span></a>
+                    <span>Admin</span></a>
             </li>
             @endif
             <!-- Divider -->
