@@ -2,10 +2,42 @@
 
 @section('content')
 <h5>Sales  summary(all)</h5>
-<div style="display:flex; flex-wrap: wrap;">
+<p></p>
+Display controll
+<div class="card mb-4 p-2">
+  <div class="card-body d-flex" style="gap:20px;">
+    <div class="form-check">    
+      <input class="form-check-input" type="checkbox" value="" id="ckbyterm" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Sales total by term
+      </label>
+    </div>
+    <div class="form-check">    
+      <input class="form-check-input" type="checkbox" value="" id="ckbycategory" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Sales total by category
+      </label>
+    </div>
+    <div class="form-check">    
+      <input class="form-check-input" type="checkbox" value="" id="ckbystore" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        Sales total by store
+      </label>
+    </div>
+    <div class="form-check">    
+      <input class="form-check-input" type="checkbox" value="" id="ckbystorecategory" checked>
+      <label class="form-check-label" for="flexCheckChecked">
+        YourStoreSales by category
+      </label>
+    </div>
+  </div>
+</div>
 
+
+
+<div style="display:flex; flex-wrap: wrap;">
                         <!-- Content Column -->
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-lg-6 mb-4" id="graphbyterm">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -26,12 +58,12 @@
 
                         </div>
 
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-lg-6 mb-4" id="graphbycategory">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
                                 <div class="card-header py-3">
-                                    <h6 class="m-0 font-weight-bold text-primary">Sales by category</h6>
+                                    <h6 class="m-0 font-weight-bold text-primary">Sales total by category</h6>
                                 </div>
                                 <div class="card-body">
                                 @foreach ($servicesales as $servicesale)
@@ -71,7 +103,7 @@
 
                         </div>
                         
-                         <div class="col-lg-6 mb-4">
+                         <div class="col-lg-6 mb-4" id="graphbystore">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -92,7 +124,7 @@
 
                         </div>
                         
-                        <div class="col-lg-6 mb-4">
+                        <div class="col-lg-6 mb-4" id="graphbystorecategory">
 
                             <!-- Project Card Example -->
                             <div class="card shadow mb-4">
@@ -176,4 +208,7 @@
                         </div>
 
 </div>
+
+    <script src="{{ asset('js/salessummarycheck.js')}}"></script>
+
 @endsection

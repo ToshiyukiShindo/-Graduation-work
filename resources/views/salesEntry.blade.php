@@ -95,6 +95,7 @@
                                             <th>loyality</th>
                                             <th>goods_sales</th>
                                             <th>other_sales</th>
+                                            <th>created_at</th>
                                             <th>操作</th>
                                         </tr>
                                     </thead>
@@ -124,6 +125,9 @@
                                             </td>
                                             <td class="table-text">
                                                 <div>{{ $sale->other_sales }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->created_at }}</div>
                                             </td>
                                             <td style="display:flex; gap:10px;">
                                             <form action="{{ url('salesedit/'.$sale->id) }}" method="GET" name="id"> {{ csrf_field() }}
