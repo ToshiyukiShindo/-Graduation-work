@@ -99,6 +99,46 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if(Auth::user()->org == ''||Auth::user()->org == 'all')
+                                        @foreach ($sales as $sale)
+                                        <tr>
+                                            <td class="table-text">
+                                                <div>{{ $sale->id }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->term }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->store_org_code }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->store_name }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->service_sales }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->loyality }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->goods_sales }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $sale->other_sales }}</div>
+                                            </td>
+                                        <!--    <td style="display:flex; gap:10px;">-->
+                                        <!--    <form action="{{ url('salesedit/'.$sale->id) }}" method="GET" name="id"> {{ csrf_field() }}-->
+                                        <!--        <button type="submit" class="btn btn-sm btn-primary">Edit</button>-->
+                                        <!--    </form>-->
+                                        <!--    <form action="{{ url('sale/'.$sale->id) }}" method="POST">-->
+                                        <!--     {{ csrf_field() }}-->
+                                        <!--    {{ method_field('DELETE') }}-->
+                                        <!--    <button type="submit" class="btn btn-sm btn-dark">削除</button>-->
+                                        <!--    </form>-->
+                                        <!--    </td>-->
+                                        <!--</tr>-->
+                                        @endforeach
+                                        @else
                                         @foreach ($orgsales as $orgsale)
                                         <tr>
                                             <td class="table-text">
@@ -137,6 +177,7 @@
                                         <!--    </td>-->
                                         <!--</tr>-->
                                         @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

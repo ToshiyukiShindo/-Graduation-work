@@ -86,6 +86,37 @@
                                         </tr>
                                     </thead>
                                     <tbody>
+                                        @if(Auth::user()->org == ''||Auth::user()->org == 'all')
+                                        @foreach ($users as $user)
+                                        <tr>
+                                            <td class="table-text">
+                                                <div>{{ $user->id }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $user->name }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $user->email }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $user->permission }}</div>
+                                            </td>
+                                            <td class="table-text">
+                                                <div>{{ $user->org }}</div>
+                                            </td>
+                                            <!--<td style="display:flex; gap:10px;">-->
+                                            <!--<form action="{{ url('usersedit/'.$user->id) }}" method="GET" name="id"> {{ csrf_field() }}-->
+                                            <!--    <button type="submit" class="btn btn-sm btn-primary">Edit</button>-->
+                                            <!--</form>-->
+                                            <!--<form action="{{ url('user/'.$user->id) }}" method="POST">-->
+                                            <!-- {{ csrf_field() }}-->
+                                            <!--{{ method_field('DELETE') }}-->
+                                            <!--<button type="submit" class="btn btn-sm btn-dark">削除</button>-->
+                                            <!--</form>-->
+                                            <!--</td>-->
+                                        </tr>
+                                        @endforeach
+                                        @else
                                         @foreach ($orgusers as $orguser)
                                         <tr>
                                             <td class="table-text">
@@ -115,6 +146,7 @@
                                             <!--</td>-->
                                         </tr>
                                         @endforeach
+                                        @endif
                                     </tbody>
                                 </table>
                             </div>

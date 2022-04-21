@@ -1,7 +1,7 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>Sales  summary</h5>
+<h5>Sales  summary(all)</h5>
 <div style="display:flex; flex-wrap: wrap;">
 
                         <!-- Content Column -->
