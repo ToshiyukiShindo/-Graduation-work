@@ -35,10 +35,22 @@ class SalesController extends Controller
         ->groupBy('store_name')
         ->get();
         $servicesales = Sale::selectRaw('SUM(service_sales) as service_sales')->get();
+        $storeservicesales = Sale::selectRaw('SUM(service_sales) as service_sales')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
         $loyalitys = Sale::selectRaw('SUM(loyality) as loyality')->get();
+        $storeloyalitys = Sale::selectRaw('SUM(loyality) as loyality')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
         $goodssales = Sale::selectRaw('SUM(goods_sales) as goods_sales')->get();
+        $storegoodssales = Sale::selectRaw('SUM(goods_sales) as goods_sales')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
         $othersales = Sale::selectRaw('SUM(other_sales) as other_sales')->get();
-        return view('salesSummary',compact('servicesales','loyalitys','goodssales','othersales','termsales','storesales'));
+        $storeothersales = Sale::selectRaw('SUM(other_sales) as other_sales')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
+        return view('salesSummary',compact('servicesales','loyalitys','goodssales','othersales','storeservicesales','storeloyalitys','storegoodssales','storeothersales','termsales','storesales'));
     }
     public function index20()
     {
@@ -51,10 +63,22 @@ class SalesController extends Controller
         ->groupBy('store_name')
         ->get();
         $servicesales = Sale::selectRaw('SUM(service_sales) as service_sales')->get();
+        $storeservicesales = Sale::selectRaw('SUM(service_sales) as service_sales')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
         $loyalitys = Sale::selectRaw('SUM(loyality) as loyality')->get();
+        $storeloyalitys = Sale::selectRaw('SUM(loyality) as loyality')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
         $goodssales = Sale::selectRaw('SUM(goods_sales) as goods_sales')->get();
+        $storegoodssales = Sale::selectRaw('SUM(goods_sales) as goods_sales')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
         $othersales = Sale::selectRaw('SUM(other_sales) as other_sales')->get();
-        return view('salesSummary0',compact('servicesales','loyalitys','goodssales','othersales','termsales','storesales'));
+        $storeothersales = Sale::selectRaw('SUM(other_sales) as other_sales')
+        ->where('store_name',\Auth::user()->org)
+        ->get();
+        return view('salesSummary0',compact('servicesales','loyalitys','goodssales','othersales','storeservicesales','storeloyalitys','storegoodssales','storeothersales','termsales','storesales'));
     }
 
     /**

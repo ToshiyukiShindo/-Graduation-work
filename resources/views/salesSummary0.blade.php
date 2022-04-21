@@ -91,6 +91,90 @@
                             </div>
 
                         </div>
+                        
+                                                
+                        <div class="col-lg-6 mb-4">
+
+                            <!-- Project Card Example -->
+                            <div class="card shadow mb-4">
+                                <div class="card-header py-3">
+                                    <h6 class="m-0 font-weight-bold text-primary">YourStoreSales by category<span>{{' <'.Auth::user()->org.'>'}}</span></h6>
+                                </div>
+                                @if(Auth::user()->org == 'all')
+                                <div class="card-body">
+                                @foreach ($servicesales as $servicesale)
+                                    <h4 class="small font-weight-bold">Service sales<span
+                                            class="float-right">{{'¥ '.$servicesale->service_sales }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: {{$servicesale->service_sales/1000000*100}}%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                    @foreach ($loyalitys as $loyality)
+                                    <h4 class="small font-weight-bold">loyality<span
+                                            class="float-right">{{'¥ '.$loyality->loyality }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{$loyality->loyality/1000000*100}}%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                    @foreach ($goodssales as $goodssale)
+                                    <h4 class="small font-weight-bold">Goods sales  
+                                    <span class="float-right">{{'¥ '.$goodssale->goods_sales }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{$goodssale->goods_sales/1000000*100}}%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                    @foreach($othersales as $othersale)
+                                    <h4 class="small font-weight-bold">Other sales  
+                                    <span class="float-right">{{'¥ '.$othersale->other_sales }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar  bg-dark" role="progressbar" style="width: {{$othersale->other_sales/1000000*100}}%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                </div>
+
+                                @else
+                                <div class="card-body">
+                                    @foreach ($storeservicesales as $storeservicesale)
+                                    <h4 class="small font-weight-bold">Service sales<span
+                                            class="float-right">{{'¥ '.$storeservicesale->service_sales }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-info" role="progressbar" style="width: {{$storeservicesale->service_sales/1000000*100}}%"
+                                            aria-valuenow="20" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                    @foreach ($storeloyalitys as $storeloyality)
+                                    <h4 class="small font-weight-bold">loyality<span
+                                            class="float-right">{{'¥ '.$storeloyality->loyality }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-warning" role="progressbar" style="width: {{$storeloyality->loyality/1000000*100}}%"
+                                            aria-valuenow="40" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                    @foreach ($storegoodssales as $storegoodssale)
+                                    <h4 class="small font-weight-bold">Goods sales  
+                                    <span class="float-right">{{'¥ '.$storegoodssale->goods_sales }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar bg-success" role="progressbar" style="width: {{$storegoodssale->goods_sales/1000000*100}}%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                    @foreach($storeothersales as $storeothersale)
+                                    <h4 class="small font-weight-bold">Other sales  
+                                    <span class="float-right">{{'¥ '.$storeothersale->other_sales }}</span></h4>
+                                    <div class="progress mb-4">
+                                        <div class="progress-bar  bg-dark" role="progressbar" style="width: {{$storeothersale->other_sales/1000000*100}}%"
+                                            aria-valuenow="60" aria-valuemin="0" aria-valuemax="1000000"></div>
+                                    </div>
+                                    @endforeach
+                                </div>
+                                @endif
+                            </div>
+
+                        </div>
 
 </div>
 @endsection
