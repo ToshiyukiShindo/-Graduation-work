@@ -40,16 +40,14 @@ Route::post('/generalusers/upload', [App\Http\Controllers\HomeController::class,
 //登録処理
 Route::group(['middleware' => ['auth', 'can:premier-only']], function () {
 Route::post('/users',[App\Http\Controllers\HomeController::class, 'store']);
-});
-Route::group(['middleware' => ['auth', 'can:ordinary']], function () {
-Route::post('/users0',[App\Http\Controllers\HomeController::class, 'store0']);
-});
 //更新画面
 Route::get('/usersedit/{user}',[App\Http\Controllers\HomeController::class, 'edit']);
 //更新処理
 Route::post('/users/update',[App\Http\Controllers\HomeController::class, 'update']);
 //ユーザーを削除
 Route::delete('/user/{user}',[App\Http\Controllers\HomeController::class, 'destroy']);
+});
+Route::post('/users0',[App\Http\Controllers\HomeController::class, 'store0']);
 
 
 Route::get('/systemusers', [App\Http\Controllers\HomeController::class, 'syslist'])->name('sysuser');
@@ -77,16 +75,14 @@ Route::get('/salesentry0', [SalesController::class, 'show0']);
 //sales登録処理
 Route::group(['middleware' => ['auth', 'can:premier-only']], function () {
 Route::post('/sales',[SalesController::class, 'store']);
-});
-Route::group(['middleware' => ['auth', 'can:ordinary']], function () {
-Route::post('/sales0',[SalesController::class, 'store0']);
-});
 //sales更新画面
 Route::get('/salessedit/{sales}',[SalesController::class, 'edit']);
 //sales更新処理
 Route::post('/sales/update',[SalesController::class, 'update']);
 //salesを削除
 Route::delete('/sale/{sale}',[SalesController::class, 'destroy']);
+});
+Route::post('/sales0',[SalesController::class, 'store0']);
 
 
 //salessummary
