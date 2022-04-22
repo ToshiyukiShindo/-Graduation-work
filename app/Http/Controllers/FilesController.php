@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use Auth;
 use Illuminate\Support\Str;
+use App\Models\User;
 use App\Models\File;
 use App\Http\Controllers\FilesController;//追記
 
@@ -18,7 +19,9 @@ class FilesController extends Controller
     
     public function index(){
     $user = Auth::user();
-    return view('files',compact('user'));
+    $files = File::get();
+    $storefiles = File::where('org',$user->org)->get();
+    return view('files',compact('user','files','storefiles'));
     }
 
     
@@ -69,5 +72,9 @@ class FilesController extends Controller
 
     }
     
-
+    public function destroy(File $file)
+    {
+             $file->delete();       //追加
+             return redirect('/files');  //追加
+    }
 }
