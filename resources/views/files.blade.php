@@ -75,6 +75,10 @@
                     {{ method_field('DELETE') }}
                         <button type="submit" class="btn btn-sm btn-danger ml-1">削除</button>
                     </form>
+                    <form action="{{ url('files/'.$file->id) }}" method="GET" name="id"> 
+                    {{ csrf_field() }}
+                        <button type="submit" class="btn btn-sm btn-primary ml-1">DL</button>
+                    </form>
                 </div>
                 </div>
         </div>

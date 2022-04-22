@@ -9,6 +9,8 @@ use Illuminate\Support\Str;
 use App\Models\User;
 use App\Models\File;
 use App\Http\Controllers\FilesController;//追記
+use App\Http\Controllers\StoresController;//
+use Illuminate\Support\Facades\Storage;
 
 class FilesController extends Controller
 {
@@ -83,4 +85,13 @@ class FilesController extends Controller
              $file->delete();       //追加
              return redirect('/files');  //追加
     }
+    
+    public function filedl(File $file){
+        $id = $file->id;
+        $name = $file->getClientOriginalName();
+        $path = $file->store('test');
+
+        return $this->fill(compact('name', 'path'))->save();
+        }
+
 }

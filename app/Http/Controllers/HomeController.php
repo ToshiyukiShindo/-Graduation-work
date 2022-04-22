@@ -12,6 +12,7 @@ use App\Http\Controllers\HomeController;//追記
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Rap2hpoutre\FastExcel\FastExcel;
+use Illuminate\Support\Facades\Storage;
 
 class HomeController extends Controller
 {
@@ -278,7 +279,6 @@ class HomeController extends Controller
     }
     return redirect(route('csv',['count' => $count]));
   }
-    
     
 }
 
