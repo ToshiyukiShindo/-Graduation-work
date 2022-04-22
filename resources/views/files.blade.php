@@ -53,7 +53,7 @@
     
     <!-- 全ての投稿リスト -->
 
-    <div class="shadow mb-4 p-2 d-flex">
+    <div class="shadow mb-4 p-2 d-flex flex-wrap">
         @if(Auth::user()->org == 'all')
         @foreach($files as $file)
         <div class="card m-1" style="width: 18rem;">
