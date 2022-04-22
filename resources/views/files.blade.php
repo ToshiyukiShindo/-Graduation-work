@@ -64,11 +64,11 @@
                     <span class="small bg-primary text-light px-1">{{$file->org}}</span>
                     <span class="small ml-2 bg-info text-light px-1">{{$file->tag}}</span>
                 </h5>
-                <p class="card-text">{{$file->desc}}</p>
+                <hr>
                 <div class="d-flex">
                     <form action="{{ url('filedetail/'.$file->id) }}" method="GET" name="id"> 
                     {{ csrf_field() }}
-                        <button type="submit" class="btn btn-sm btn-primary">詳細</button>
+                        <button type="submit" class="btn btn-sm btn-info">詳細</button>
                     </form>
                     <form action="{{ url('file/'.$file->id) }}" method="POST">
                     {{ csrf_field() }}
@@ -86,10 +86,10 @@
             <div class="card-body">
                 <h5 class="card-title">{{$storefile->title}}<br>
                 <hr>
-                    <span class="small bg-primary text-light px-1">{{$storefile->org}}</span>
+                    <span class="small bg-success text-light px-1">{{$storefile->org}}</span>
                     <span class="small ml-2 bg-info text-light px-1">{{$storefile->tag}}</span>
                 </h5>
-                <p class="card-text">{{$storefile->desc}}</p>
+                <hr>
                 <div class="d-flex">
                     <form action="{{ url('filedetail/'.$storefile->id) }}" method="GET" name="id"> 
                     {{ csrf_field() }}
