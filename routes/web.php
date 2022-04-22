@@ -95,5 +95,7 @@ Route::get('/salessummary0', [SalesController::class, 'index20'])->name('salesSu
 Route::get('/files', [FilesController::class, 'index']);
 //画像アップロード処理
 Route::post('/files/upload',[FilesController::class, 'upload']);
+//詳細画面を表示
+Route::get('/filedetail/{file}',[FilesController::class, 'detail']);
 //画像を削除
 Route::delete('/file/{file}',[FilesController::class, 'destroy']);

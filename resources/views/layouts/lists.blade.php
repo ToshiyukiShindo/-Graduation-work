@@ -44,7 +44,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Lists
+                Main
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->

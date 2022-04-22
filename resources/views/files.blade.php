@@ -65,12 +65,18 @@
                     <span class="small ml-2 bg-info text-light px-1">{{$file->tag}}</span>
                 </h5>
                 <p class="card-text">{{$file->desc}}</p>
-                <form action="{{ url('file/'.$file->id) }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-                <button type="submit" class="btn btn-sm btn-danger">削除</button>
-                </form>
-            </div>
+                <div class="d-flex">
+                    <form action="{{ url('filedetail/'.$file->id) }}" method="GET" name="id"> 
+                    {{ csrf_field() }}
+                        <button type="submit" class="btn btn-sm btn-primary">詳細</button>
+                    </form>
+                    <form action="{{ url('file/'.$file->id) }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                        <button type="submit" class="btn btn-sm btn-danger ml-1">削除</button>
+                    </form>
+                </div>
+                </div>
         </div>
         @endforeach
         @else
@@ -84,11 +90,17 @@
                     <span class="small ml-2 bg-info text-light px-1">{{$storefile->tag}}</span>
                 </h5>
                 <p class="card-text">{{$storefile->desc}}</p>
-                <form action="{{ url('file/'.$storefile->id) }}" method="POST">
-                {{ csrf_field() }}
-                {{ method_field('DELETE') }}
-                <button type="submit" class="btn btn-sm btn-danger">削除</button>
-                </form>
+                <div class="d-flex">
+                    <form action="{{ url('filedetail/'.$storefile->id) }}" method="GET" name="id"> 
+                    {{ csrf_field() }}
+                        <button type="submit" class="btn btn-sm btn-primary">詳細</button>
+                    </form>
+                    <form action="{{ url('file/'.$storefile->id) }}" method="POST">
+                    {{ csrf_field() }}
+                    {{ method_field('DELETE') }}
+                        <button type="submit" class="btn btn-sm btn-danger ml-1">削除</button>
+                    </form>
+                </div>
             </div>
         </div>
         @endforeach

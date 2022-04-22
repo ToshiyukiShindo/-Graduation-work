@@ -23,6 +23,12 @@ class FilesController extends Controller
     $storefiles = File::where('org',$user->org)->get();
     return view('files',compact('user','files','storefiles'));
     }
+    
+    public function detail(File $file){
+        $id = $file->id;
+        $files = File::where('id',$id)->get();
+        return view('filedetail',compact('id','files'));
+    }
 
     
     // 画像アップロード処理
