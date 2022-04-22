@@ -1,16 +1,17 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>general users <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv" id="guentry">Entry data</a></h5>
+<h5>general users 
+<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" id="guentry">Entry data</a>
+<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" href="/generalusers/csv" id="csv entry">csv entry</a>
+</h5>
 
      <!-- Bootstrapの定形コード… -->
      <div class="card-body">
          <div class="card-title hidden" id="gutitle">
              ユーザー登録
          </div>
-         <!-- バリデーションエラーの表示に使用-->
      	@include('common.errors')
-         <!-- バリデーションエラーの表示に使用-->
          <!-- 本登録フォーム -->
          <form action="{{ url('users') }}" method="POST" class="form-horizontal">
              {{ csrf_field() }}
@@ -50,21 +51,6 @@
              </div>
          </form>
          
-    <!-- <div class="upload hidden" id="gucsv">-->
-    <!--    <p>DBに追加したいCSVデータを選択してください。</p>-->
-    <!--<form action="" method="post" enctype="multipart/form-data">-->
-    <!--    <div class="row">-->
-    <!--        <label class="col-1 text-right" for="form-file-1">File:</label>-->
-    <!--        <div class="col-11">-->
-    <!--            <div class="custom-file">-->
-    <!--                <input type="file" name="csv" class="custom-file-input" id="customFile">-->
-    <!--                <label class="custom-file-label" for="customFile" data-browse="参照">ファイル選択...</label>-->
-    <!--            </div>-->
-    <!--        </div>-->
-    <!--    </div>-->
-    <!--    <button type="submit" class="btn btn-sm btn-primary">送信</button>-->
-    <!--</form>-->
-    <!--</div>-->
 
      </div>
     

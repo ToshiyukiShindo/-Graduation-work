@@ -10,6 +10,8 @@ use App\Models\Sale;
 use Validator;
 use App\Http\Controllers\HomeController;//追記
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class HomeController extends Controller
 {
@@ -71,14 +73,14 @@ class HomeController extends Controller
     
     public function gulist()
     {
-        $users = User::where('permission',0)->get();
+        $users = User::where('permission','!=',1)->get();
         $stores = Store::get();
         return view('genuser',compact('users','stores'));
             }
     public function gulist0()
     {
-        $users = User::where('permission',0)->get();
-        $orgusers = User::where('permission',0)->where('org',\Auth::user()->org)->get();
+        $users = User::where('permission','!=',1)->get();
+        $orgusers = User::where('permission','!=',1)->where('org',\Auth::user()->org)->get();
         $stores = Store::get();
         return view('genuser0',compact('users','orgusers','stores'));
             }
@@ -228,6 +230,56 @@ class HomeController extends Controller
              $user->delete();       //追加
              return redirect('/generalusers');  //追加
     }
+    
+    
+    
+    //CSVinport関連
+    // 一覧表示処理
+  public function csvindex(Request $request){
+
+    $data = User::latest()->get(); // データ登録対象のテーブルからデータを取得する
+    $count = $request->input('count'); // 何件登録したか結果を返す
+
+    return view('usercsv',['data' => $data,'cnt' => $count]);
+  }
+
+
+  // CSVアップロード〜DBインポート処理
+  public function upload(Request $request) {
+
+    // 一旦アップロードされたCSVファイルを受け取り保存する
+    $uploaded_file = $request->file('csvdata'); // inputのnameはcsvdataとする 
+    $orgName = date('YmdHis') ."_".$request->file('csvdata')->getClientOriginalName();
+    $spath = storage_path('app/');
+    $path = $spath.$request->file('csvdata')->storeAs('',$orgName);
+
+    // CSVファイル（エクセルファイルも可）を読み込む
+    $result = (new FastExcel)->importSheets($path); //エクセルファイルをアップロードする時はこちら
+    // $result = (new FastExcel)->configureCsv(',')->importSheets($path); // カンマ区切りのCSVファイル時
+
+    // DB登録処理
+    $count = 0; // 登録件数確認用
+    foreach ($result as $row) {
+      foreach($row as $item){
+        // ここでCSV内データとテーブルのカラムを紐付ける（左側カラム名、右側CSV１行目の項目名）
+        $param = [
+          'name' => ''.$item["name"].'',
+          'email' => ''.$item["email"].'',
+          'permission' => ''.$item["permission"].'',
+          'org' => ''.$item["org"].'',
+          'password' => ''.Hash::make($item["password"]).'',
+          'created_at' => ''.$item["created_at"].'',
+          'updated_at' => ''.$item["updated_at"].'',
+        ];
+        // 次にDBにinsertする（更新フラグなどに対応するため１行ずつinsertする）
+        DB::table('users')->insert($param);
+        $count++;
+      }
+    }
+    return redirect(route('csv',['count' => $count]));
+  }
+    
+    
 }
 
 
