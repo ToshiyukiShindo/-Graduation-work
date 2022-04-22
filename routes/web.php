@@ -100,6 +100,10 @@ Route::get('/filedetail/{file}',[FilesController::class, 'detail']);
 //画像を削除
 Route::delete('/file/{file}',[FilesController::class, 'destroy']);
 
-//CSVをインポート
+//userにCSVをインポート
 Route::get('generalusers/csv', [HomeController::class,'csvindex'])->name('csv');
 Route::post('/generalusers/csv/upload', [HomeController::class,'upload']);
+
+//salesにCSVをインポート
+Route::get('salesentry/csv', [SalesController::class,'csvindex'])->name('csv');
+Route::post('/salesentry/csv/upload', [SalesController::class,'upload']);

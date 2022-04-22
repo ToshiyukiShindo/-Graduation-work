@@ -8,6 +8,9 @@ use App\Models\User;
 use App\Models\Store;
 use Validator;
 use App\Http\Controllers\HomeController;//追記
+use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\DB;
+use Rap2hpoutre\FastExcel\FastExcel;
 
 class SalesController extends Controller
 {
@@ -208,4 +211,55 @@ class SalesController extends Controller
              return redirect('/salesentry');  //追加
 
     }
+    
+        //CSVinport関連
+    // 一覧表示処理
+  public function csvindex(Request $request){
+
+    $data = Sale::latest()->get(); // データ登録対象のテーブルからデータを取得する
+    $count = $request->input('count'); // 何件登録したか結果を返す
+
+    return view('salescsv',['data' => $data,'cnt' => $count]);
+  }
+
+
+  // CSVアップロード〜DBインポート処理
+  public function upload(Request $request) {
+
+    // 一旦アップロードされたCSVファイルを受け取り保存する
+    $uploaded_file = $request->file('csvdata'); // inputのnameはcsvdataとする 
+    $orgName = date('YmdHis') ."_".$request->file('csvdata')->getClientOriginalName();
+    $spath = storage_path('app/');
+    $path = $spath.$request->file('csvdata')->storeAs('',$orgName);
+
+    // CSVファイル（エクセルファイルも可）を読み込む
+    $result = (new FastExcel)->importSheets($path); //エクセルファイルをアップロードする時はこちら
+    // $result = (new FastExcel)->configureCsv(',')->importSheets($path); // カンマ区切りのCSVファイル時
+
+    // DB登録処理
+    $count = 0; // 登録件数確認用
+    foreach ($result as $row) {
+      foreach($row as $item){
+        // ここでCSV内データとテーブルのカラムを紐付ける（左側カラム名、右側CSV１行目の項目名）
+        $param = [
+          'term' => ''.$item["term"].'',
+          'store_org_code' => ''.$item["store_org_code"].'',
+          'store_name' => ''.$item["store_name"].'',
+          'service_sales' => ''.$item["service_sales"].'',
+          'loyality' => ''.$item["loyality"].'',
+          'goods_sales' => ''.$item["goods_sales"].'',
+          'other_sales' => ''.$item["other_sales"].'',
+          'created_at' => ''.$item["created_at"].'',
+          'updated_at' => ''.$item["updated_at"].'',
+        ];
+        // 次にDBにinsertする（更新フラグなどに対応するため１行ずつinsertする）
+        DB::table('sales')->insert($param);
+        $count++;
+      }
+    }
+    return redirect(route('csv',['count' => $count]));
+  }
+
+    
+    
 }

@@ -1,7 +1,10 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>sales entry <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv" id="salesentry">Entry data</a></h5>
+<h5>sales entry 
+<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" id="salesentry">Entry data</a>
+<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" href="/salesentry/csv" id="csv entry">csv entry</a>
+</h5>
 
      <!-- Bootstrapの定形コード… -->
      <div class="card-body">
