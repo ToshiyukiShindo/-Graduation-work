@@ -43,7 +43,7 @@
 
             <!-- Heading -->
             <div class="sidebar-heading">
-                Lists
+                Main
             </div>
 
             <!-- Nav Item - Pages Collapse Menu -->
@@ -79,6 +79,13 @@
                         <a class="collapse-item" href="/salesentry">Sales entry</a>
                     </div>
                 </div>
+            </li>
+            
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
+                <a class="nav-link collapsed" href="/files">
+                    <span>Files</span>
+                </a>
             </li>
 
 

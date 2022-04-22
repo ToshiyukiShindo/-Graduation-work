@@ -4,6 +4,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\HomeController;//追記
 use App\Http\Controllers\PostsController;//追記
 use App\Http\Controllers\SalesController;//追記
+use App\Http\Controllers\FilesController;//追記
 use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoresController;//
@@ -88,3 +89,9 @@ Route::post('/sales0',[SalesController::class, 'store0']);
 //salessummary
 Route::get('/salessummary', [SalesController::class, 'index2'])->name('salesSummary');
 Route::get('/salessummary0', [SalesController::class, 'index20'])->name('salesSummary0');
+
+
+//画像アップロード画面表示
+Route::get('/files', [FilesController::class, 'index']);
+//画像アップロード処理
+Route::post('/files/upload',[FilesController::class, 'upload']);
