@@ -1,15 +1,14 @@
-@extends('layouts.lists')
+@extends('layouts.lists0')
 @section('content')
 
 <div class="upload">
-    <p>CSVデータを選択してください。</p>
-    <form action="/generalusers/csv/upload/" method="post" enctype="multipart/form-data">
+    <p>salesのCSVデータを選択してください。</p>
+    <form action="/salesentry/csv/upload/" method="post" enctype="multipart/form-data">
       @csrf
       <input type="file" name="csvdata" />
       <button>送信</button>
     </form>
   </div>
-  
 
 @if($cnt==0)
 @else
@@ -26,10 +25,13 @@
       <tr>
         <th>created_at</th>
         <th>ID</th>
-        <th>name</th>
-        <th>email</th>
-        <th>permission</th>
-        <th>org</th>
+        <th>term</th>
+        <th>store_org_code</th>
+        <th>store_name</th>
+        <th>service_sales</th>
+        <th>loyality</th>
+        <th>goods_sales</th>
+        <th>other_sales</th>
         <th>updated_at</th>
       </tr>
 
@@ -38,10 +40,13 @@
       <tr>
         <td>{{ $val->created_at }}</td>
         <td>{{ $val->id }}</td>
-        <td>{{ $val->name }}</td>
-        <td>{{ $val->email }}</td>
-        <td>{{ $val->permission }}</td>
-        <td>{{ $val->org }}</td>
+        <td>{{ $val->term }}</td>
+        <td>{{ $val->store_org_code }}</td>
+        <td>{{ $val->store_name }}</td>
+        <td>{{ $val->service_sales }}</td>
+        <td>{{ $val->loyality }}</td>
+        <td>{{ $val->goods_sales }}</td>
+        <td>{{ $val->other_sales }}</td>
         <td>{{ $val->updated_at }}</td>
       </tr>
       @endforeach

@@ -106,4 +106,5 @@ Route::post('/generalusers/csv/upload', [HomeController::class,'upload']);
 
 //salesにCSVをインポート
 Route::get('salesentry/csv', [SalesController::class,'csvindex'])->name('csv');
+Route::get('salesentry/csv0', [SalesController::class,'csvindex0'])->name('csv0');
 Route::post('/salesentry/csv/upload', [SalesController::class,'upload']);

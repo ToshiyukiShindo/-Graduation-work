@@ -1,9 +1,10 @@
 <!-- resources/views/posts.blade.php -->
-@extends('layouts.lists')
+@extends('layouts.others')
 @section('content')
     <!-- Bootstrapの定形コード… -->
     <div class="card-body">
-        <h5>お知らせの投稿</h5>
+        <h5>お知らせの投稿<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-2" id="download">Generate Report</a></h5>
+
         <p></p>
         <!-- バリデーションエラーの表示に使用-->
     	@include('common.errors')

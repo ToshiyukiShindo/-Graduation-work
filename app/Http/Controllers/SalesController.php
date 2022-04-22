@@ -221,6 +221,13 @@ class SalesController extends Controller
 
     return view('salescsv',['data' => $data,'cnt' => $count]);
   }
+  public function csvindex0(Request $request){
+
+    $data = Sale::latest()->get(); // データ登録対象のテーブルからデータを取得する
+    $count = $request->input('count'); // 何件登録したか結果を返す
+
+    return view('salescsv0',['data' => $data,'cnt' => $count]);
+  }
 
 
   // CSVアップロード〜DBインポート処理
@@ -257,7 +264,7 @@ class SalesController extends Controller
         $count++;
       }
     }
-    return redirect(route('csv',['count' => $count]));
+    return redirect(route('csv0',['count' => $count]));
   }
 
     

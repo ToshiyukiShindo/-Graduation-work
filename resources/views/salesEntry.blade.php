@@ -2,13 +2,14 @@
 
 @section('content')
 <h5>sales entry 
-<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" id="salesentry">Entry data</a>
+<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" id="salesentry">Manual Entry</a>
 <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" href="/salesentry/csv" id="csv entry">csv entry</a>
+<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-2" id="download">Generate Report</a>
 </h5>
 
      <!-- Bootstrapの定形コード… -->
      <div class="card-body">
-         <div class="card-title" id="salestitle">
+         <div class="card-title hidden" id="salestitle">
              sales登録
          </div>
          <!-- バリデーションエラーの表示に使用-->
@@ -18,43 +19,43 @@
          <form action="{{ url('sales') }}" method="POST" class="form-horizontal">
              {{ csrf_field() }}
              <!-- 本のタイトル -->
-             <div class="form-group" id="salesterm">
+             <div class="form-group hidden" id="salesterm">
                  <div class="col-sm-6">Term
                      <input type="text" name="term" class="form-control" placeholder="2022-04">
                  </div>
              </div>
-             <div class="form-group" id="salesstoc">
+             <div class="form-group hidden" id="salesstoc">
                  <div class="col-sm-6">store_org_code
                      <input type="text" name="store_org_code" class="form-control" placeholder="ab1001">
                  </div>
              </div>
-             <div class="form-group" id="salesstname">
+             <div class="form-group hidden" id="salesstname">
                  <div class="col-sm-6">store_name
                      <input type="text" name="store_name" class="form-control" placeholder="sugamo" value="{{ Auth::user()->org }}">
                  </div>
              </div>
-             <div class="form-group"  id="salesss">
+             <div class="form-group hidden"  id="salesss">
                  <div class="col-sm-6">sevice_sales
                      <input type="number" name="service_sales" class="form-control">
                  </div>
              </div>
-             <div class="form-group"  id="salesloy">
+             <div class="form-group hidden"  id="salesloy">
                  <div class="col-sm-6">loyality
                      <input type="number" name="loyality" class="form-control">
                  </div>
              </div>
-             <div class="form-group" id="salesgs">
+             <div class="form-group hidden" id="salesgs">
                  <div class="col-sm-6">goods_sales
                      <input type="number" name="goods_sales" class="form-control">
                  </div>
              </div>
-             <div class="form-group" id="salesos">
+             <div class="form-group hidden" id="salesos">
                  <div class="col-sm-6">other_sales
                      <input type="number" name="other_sales" class="form-control">
                  </div>
              </div>
              <!-- 本 登録ボタン -->
-             <div class="form-group" id="salesbtn">
+             <div class="form-group hidden" id="salesbtn">
                  <div class="col-sm-offset-3 col-sm-6">
                      <button type="submit" class="btn btn-sm btn-primary">
                          Save

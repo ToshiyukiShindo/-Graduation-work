@@ -30,7 +30,7 @@
         <ul class="navbar-nav bg-gradient-primary sidebar sidebar-dark accordion" id="accordionSidebar">
 
             <!-- Sidebar - Brand -->
-            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home0">
+            <a class="sidebar-brand d-flex align-items-center justify-content-center" href="/home">
                 <div class="sidebar-brand-icon rotate-n-15">
                 </div>
                 <div class="sidebar-brand-text mx-3">Bridges</div>
@@ -55,18 +55,18 @@
                 </a>
                 <div id="collapseTwo" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/generalusers0">general users</a>
-                        <!--<a class="collapse-item" href="/systemusers">system users</a>-->
+                        <a class="collapse-item" href="/generalusers">general users</a>
+                        <a class="collapse-item" href="/systemusers">system users</a>
                     </div>
                 </div>
             </li>
 
             <!-- Nav Item - Utilities Collapse Menu -->
-            <!--<li class="nav-item">-->
-            <!--    <a class="nav-link" href="/stores">-->
-            <!--        <span>Stores</span>-->
-            <!--    </a>-->
-            <!--</li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="/stores">
+                    <span>Stores</span>
+                </a>
+            </li>
 
             <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
@@ -76,19 +76,19 @@
                 </a>
                 <div id="collapsePages" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
                     <div class="bg-white py-2 collapse-inner rounded">
-                        <a class="collapse-item" href="/salessummary0">Summary</a>
-                        <a class="collapse-item" href="/salesentry0">Sales Entry</a>
+                        <a class="collapse-item" href="/salessummary">Summary</a>
+                        <a class="collapse-item" href="/salesentry">Sales Entry</a>
                     </div>
                 </div>
             </li>
-                
+
+            
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
                 <a class="nav-link collapsed" href="/files">
                     <span>Files</span>
                 </a>
             </li>
-
 
             <!-- Divider -->
             <hr class="sidebar-divider">
@@ -100,26 +100,18 @@
 
 
             <!-- Nav Item - Tables -->
-            <!--<li class="nav-item">-->
-            <!--    <a class="nav-link" href="/post">-->
-            <!--        <span>Posts</span></a>-->
-            <!--</li>-->
+            <li class="nav-item">
+                <a class="nav-link" href="/post">
+                    <span>Posts</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
-            @if(Auth::user()->permission == '1')
             <li class="nav-item">
                 <a class="nav-link" href="/home">
                     <span>Admin</span></a>
             </li>
-            @else
-            <li class="nav-item hidden">
-                <a class="nav-link" href="#">
-                    <span>Admin</span></a>
-            </li>
-            @endif
-
             <!-- Divider -->
-            <hr class="sidebar-divider d-none d-md-block mt-2">
+            <hr class="sidebar-divider d-none d-md-block">
 
             <!-- Sidebar Toggler (Sidebar) -->
             <div class="text-center d-none d-md-inline">
@@ -206,8 +198,7 @@
 
                     <!-- Page Heading -->
                     <div class="d-sm-flex align-items-center justify-content-between mb-4">
-                        <h1 class="h3 mb-0 text-gray-800">Main</h1>
-
+                        <h1 class="h3 mb-0 text-gray-800">Others</h1>
                     </div>
 
                 @yield('content')
