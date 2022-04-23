@@ -9,6 +9,8 @@ use App\Http\Controllers\BoardsController;//追記
 use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoresController;//
+use App\Http\Controllers\AccountitemsController;//
+use App\Http\Controllers\ReporttermsController;//
 
 /*
 |--------------------------------------------------------------------------
@@ -129,3 +131,29 @@ Route::get('/boards', [App\Http\Controllers\BoardsController::class, 'index'])->
 Route::get('/boards0', [App\Http\Controllers\BoardsController::class, 'index0'])->name('boards0');
 Route::post('/boards', [App\Http\Controllers\BoardsController::class, 'store']);
 Route::post('/boards0', [App\Http\Controllers\BoardsController::class, 'store0']);
+
+
+ // account_itemsの表示
+Route::get('/accountitems', [AccountitemsController::class, 'index'])->name('accountitems');
+Route::get('/accounts', [AccountitemsController::class, 'listindex']);
+//登録処理
+Route::post('/accountitems',[AccountitemsController::class, 'store']);
+//更新画面
+Route::get('/accountitems/{accountitems}',[AccountitemsController::class, 'edit']);
+//更新処理
+Route::post('/accountitems/update',[AccountitemsController::class, 'update']);
+//削除
+Route::delete('/accountitem/{accountitem}',[AccountitemsController::class, 'destroy']);
+
+
+
+ // reporttermsの表示
+Route::get('/reportterms', [ReporttermsController::class, 'index'])->name('reportterms');
+//登録処理
+Route::post('/reportterms',[ReporttermsController::class, 'store']);
+//更新画面
+Route::get('/reportterms/{reportterms}',[ReporttermsController::class, 'edit']);
+//更新処理
+Route::post('/reportterms/update',[ReporttermsController::class, 'update']);
+//削除
+Route::delete('/reportterm/{reportterm}',[ReporttermsController::class, 'destroy']);

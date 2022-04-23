@@ -111,6 +111,18 @@
                 <a class="nav-link" href="/post">
                     <span>Posts</span></a>
             </li>
+                        
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/accountitems">
+                    <span>Accounts settings</span></a>
+            </li>
+            
+            <!-- Nav Item - Tables -->
+            <li class="nav-item">
+                <a class="nav-link" href="/reportterms">
+                    <span>Report settings</span></a>
+            </li>
 
             <!-- Nav Item - Tables -->
             <li class="nav-item">
