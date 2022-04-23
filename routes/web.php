@@ -5,6 +5,7 @@ use App\Http\Controllers\HomeController;//追記
 use App\Http\Controllers\PostsController;//追記
 use App\Http\Controllers\SalesController;//追記
 use App\Http\Controllers\FilesController;//追記
+use App\Http\Controllers\BoardsController;//追記
 use App\Models\Store;
 use Illuminate\Http\Request;
 use App\Http\Controllers\StoresController;//
@@ -111,3 +112,8 @@ Route::post('/salesentry/csv/upload', [SalesController::class,'upload']);
 
 //fileをダウンロード
 Route::get('/files/{fileid}', [FilesController::class,'filedl'])->name('file.download');
+
+
+//Boardsページへ接続
+Route::get('/boards', [App\Http\Controllers\BoardsController::class, 'index'])->name('boards');
+Route::get('/boards0', [App\Http\Controllers\BoardsController::class, 'index0'])->name('boards0');

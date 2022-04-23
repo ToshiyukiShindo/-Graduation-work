@@ -1,4 +1,4 @@
-<!-- resources/views/posts.blade.php -->
+
 @extends('layouts.lists')
 @section('content')
     <!-- Bootstrapの定形コード… -->
