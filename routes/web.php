@@ -136,6 +136,7 @@ Route::post('/boards0', [App\Http\Controllers\BoardsController::class, 'store0']
  // account_itemsの表示
 Route::get('/accountitems', [AccountitemsController::class, 'index'])->name('accountitems');
 Route::get('/accounts', [AccountitemsController::class, 'listindex']);
+Route::get('/accounts0', [AccountitemsController::class, 'listindex0']);
 //登録処理
 Route::post('/accountitems',[AccountitemsController::class, 'store']);
 //更新画面

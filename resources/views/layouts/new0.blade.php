@@ -83,6 +83,13 @@
 
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
+                <a class="nav-link" href="/accounts0">
+                    <span>Accounts</span>
+                </a>
+            </li>
+
+            <!-- Nav Item - Utilities Collapse Menu -->
+            <li class="nav-item">
                 <a class="nav-link collapsed" href="/boards0">
                     <span>Boards</span>
                 </a>

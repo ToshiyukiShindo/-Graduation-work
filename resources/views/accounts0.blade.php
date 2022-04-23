@@ -1,4 +1,4 @@
-@extends('layouts.lists')
+@extends('layouts.lists0')
 
 @section('content')
 <h3>Account format 
@@ -6,7 +6,7 @@
 </h3>
 <p class="mb-4"></p>
 <h3 class="mb-4"> Report folder<br>
-<div class="card-body bg-white m-1 mt-2 p-2">
+<div class="card-body bg-white m-1 p-2">
 @foreach($terms as $term)
 <a class="btn btn-link pull-right font-weight-bold font-3xl" href="{{ url($term->folder) }}" target="_blank">{{'folder link <'.$term->report_term.'>'}}</a>
 @endforeach

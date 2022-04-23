@@ -66,7 +66,7 @@
                                                 <div>{{ $term->report_term }}</div>
                                             </td>
                                             <td class="table-text">
-                                                <div>{{ $term->folder }}</div>
+                                                <div>{{ Hash::make($term->folder) }}</div>
                                             </td>
                                             <td class="table-text">
                                                 <div>{{ $term->created_at }}</div>

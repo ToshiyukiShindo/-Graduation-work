@@ -6,6 +6,7 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\AccountitemsController;//追記
 use App\Models\Account_item;//この行を上に追加
 use App\Models\User;
+use App\Models\Reportterm;
 use Validator;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
@@ -24,10 +25,17 @@ class AccountitemsController extends Controller
         $items = Account_item::get();
         return view('account_items',compact('items'));
     }
+    public function listindex0()
+    {
+        $items = Account_item::get();
+        $terms = Reportterm::get();
+        return view('accounts0',compact('items','terms'));
+    }
     public function listindex()
     {
         $items = Account_item::get();
-        return view('accounts',compact('items'));
+        $terms = Reportterm::get();
+        return view('accounts',compact('items','terms'));
     }
 
     /**
