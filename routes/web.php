@@ -101,6 +101,15 @@ Route::get('/filedetail/{file}',[FilesController::class, 'detail']);
 //画像を削除
 Route::delete('/file/{file}',[FilesController::class, 'destroy']);
 
+//画像アップロード画面表示
+Route::get('/files0', [FilesController::class, 'index0']);
+//画像アップロード処理
+Route::post('/files0/upload',[FilesController::class, 'upload0']);
+//詳細画面を表示
+Route::get('/filedetail0/{file}',[FilesController::class, 'detail0']);
+//画像を削除
+Route::delete('/file0/{file}',[FilesController::class, 'destroy0']);
+
 //userにCSVをインポート
 Route::get('generalusers/csv', [HomeController::class,'csvindex'])->name('csv');
 Route::post('/generalusers/csv/upload', [HomeController::class,'upload']);
@@ -112,6 +121,7 @@ Route::post('/salesentry/csv/upload', [SalesController::class,'upload']);
 
 //fileをダウンロード
 Route::get('/files/{fileid}', [FilesController::class,'filedl'])->name('file.download');
+Route::get('/files0/{fileid}', [FilesController::class,'filedl0'])->name('file.download0');
 
 
 //Boardsページへ接続

@@ -30,7 +30,7 @@ class BoardsController extends Controller
         
         // 表示する件数を代入
         $display = 15;
-        $boards = Board::offset($length-$display)->limit($display)->get();
+        $boards = Board::offset($length-$display)->latest()->limit($display)->get();
         return view('boards',compact('boards','length','display','user_id','user_name'));
     }
     public function index0(Request $request)
@@ -45,7 +45,7 @@ class BoardsController extends Controller
         
         // 表示する件数を代入
         $display = 15;
-        $boards = Board::offset($length-$display)->limit($display)->get();
+        $boards = Board::offset($length-$display)->latest()->limit($display)->get();
         return view('boards0',compact('boards','length','display','user_id','user_name'));
     }
 

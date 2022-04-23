@@ -90,7 +90,7 @@
                             
             <!-- Nav Item - Utilities Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link collapsed" href="/files">
+                <a class="nav-link collapsed" href="/files0">
                     <span>Files</span>
                 </a>
             </li>

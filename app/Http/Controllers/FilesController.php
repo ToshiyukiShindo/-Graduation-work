@@ -93,5 +93,82 @@ class FilesController extends Controller
 
         return $this->fill(compact('name', 'path'))->save();
         }
+        
+        
+    //ここからゼロpermission対応    
+    public function index0(){
+    $user = Auth::user();
+    $files = File::get();
+    $storefiles = File::where('org',$user->org)->get();
+    return view('files0',compact('user','files','storefiles'));
+    }
+    
+    public function detail0(File $file){
+        $id = $file->id;
+        $files = File::where('id',$id)->get();
+        return view('filedetail0',compact('id','files'));
+    }
+
+    
+    // 画像アップロード処理
+    public function upload0(Request $request){
+
+   // バリデーション 
+    $validator = $request->validate( [
+        'img' => 'required|file|image|max:2048', 
+    ]);
+
+    // 画像ファイル取得
+    $file = $request->img;
+
+    // ログインユーザー取得
+    $user = Auth::user();
+
+    if ( !empty($file) ) {
+
+        // ファイルの拡張子取得
+        $ext = $file->guessExtension();
+
+        //ファイル名を生成
+        $fileName = Str::random(32).'.'.$ext;
+
+        // 画像のファイル名を任意のDBに保存
+        $files = new File;
+        $files->title = $request->title;
+        $files->desc = $request->desc;
+        $files->user_id = $user->id;
+        $files->org = $user->org;
+        $files->img_url = $fileName;
+        $files->tag = $request->tag;
+        $files->save();
+
+        //public/uploadフォルダを作成
+        $target_path = public_path('/uploads/');
+
+        //ファイルをpublic/uploadフォルダに移動
+        $file->move($target_path,$fileName);
+
+    }else{
+
+        return redirect('/home0');
+        }
+
+        return redirect('/files0');
+
+    }
+    
+    public function destroy0(File $file)
+    {
+             $file->delete();       //追加
+             return redirect('/files0');  //追加
+    }
+    
+    public function filedl0(File $file){
+        $id = $file->id;
+        $name = $file->getClientOriginalName();
+        $path = $file->store('test');
+
+        return $this->fill(compact('name', 'path'))->save();
+        }
 
 }

@@ -13,8 +13,9 @@
         <div class="my-2 p-2 rounded-lg">
             <ul>
                 @foreach ($boards as $board)
+                    <hr>
                     <p class="text-xs @if($board->user_id !== Auth::user()->id) text-left @endif">{{$board->created_at}} ＠{{$board->user_name}}</p>
-                    <li class="mb-3 p-2 rounded-lg bg-gray-500 text-white relative @if($board->user_name == Auth::user()->name) self @else other @endif" style="width:300px;">
+                    <li class="w-75 mb-3 p-2 rounded-lg bg-white text-dark relative @if($board->user_name == Auth::user()->name) self @else other @endif" style="list-style:none;">
                         {{$board->message}}
                     </li>
                 @endforeach
