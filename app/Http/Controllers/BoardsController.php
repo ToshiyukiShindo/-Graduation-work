@@ -20,33 +20,22 @@ class BoardsController extends Controller
      */
     public function index(Request $request)
     {
-          // ユーザーIDをセッションに登録
-        $user_id = $request->session()->get('user_id', Str::random(20));
-        session(['user_id' => $user_id]);
-        // ユーザー名を変数に登録（デフォルト値：Guest）
-        $user_name = $request->session()->get('user_name', 'Guest');
         // データーベースの件数を取得
         $length = Board::all()->count();
         
         // 表示する件数を代入
         $display = 15;
-        $boards = Board::offset($length-$display)->latest()->limit($display)->get();
-        return view('boards',compact('boards','length','display','user_id','user_name'));
+        $messages = Board::latest()->limit($display)->get();
+        return view('boards',compact('messages','length','display'));
     }
     public function index0(Request $request)
     {
-          // ユーザーIDをセッションに登録
-        $user_id = $request->session()->get('user_id', Str::random(20));
-        session(['user_id' => $user_id]);
-        // ユーザー名を変数に登録（デフォルト値：Guest）
-        $user_name = $request->session()->get('user_name', 'Guest');
         // データーベースの件数を取得
         $length = Board::all()->count();
-        
         // 表示する件数を代入
         $display = 15;
-        $boards = Board::offset($length-$display)->latest()->limit($display)->get();
-        return view('boards0',compact('boards','length','display','user_id','user_name'));
+        $messages = Board::latest()->limit($display)->get();
+        return view('boards0',compact('messages','length','display'));
     }
 
     /**
@@ -68,20 +57,26 @@ class BoardsController extends Controller
     public function store(Request $request)
     {
         // ユーザー名をフォームから取得してセッションに登録
-        session(['user_name' => $request->user_name]);
         $boards = new Board;
-        $form = $request->all();
-        $boards->fill($form)->save();
-        return view('/boards',compact('boards'));
+        $boards->user_id = $request->user_id;
+        $boards->user_name = $request->user_name;
+        $boards->message = $request->message;
+        $boards->save();
+        $display = 15;
+        $messages = Board::latest()->limit($display)->get();
+        return view('/boards',compact('boards','messages','display'));
     }
     public function store0(Request $request)
     {
         // ユーザー名をフォームから取得してセッションに登録
-        session(['user_name' => $request->user_name]);
         $boards = new Board;
-        $form = $request->all();
-        $boards->fill($form)->save();
-        return view('/boards0',compact('boards'));
+        $boards->user_id = $request->user_id;
+        $boards->user_name = $request->user_name;
+        $boards->message = $request->message;
+        $boards->save();
+        $display = 15;
+        $messages = Board::latest()->limit($display)->get();
+        return view('/boards0',compact('boards','messages','display'));
     }
 
     /**

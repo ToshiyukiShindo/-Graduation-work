@@ -3,7 +3,7 @@
 
     <body class="w-4/5 md:w-3/5 lg:w-2/5 m-auto">
         <h3 class="my-4 font-bold">{{'boards'}}</h3>
-        <form class="my-4 py-2 px-4 rounded-lg bg-gray-300 text-sm flex flex-col md:flex-row flex-grow" action=""{{ url('boards0') }}"" method="POST">
+        <form class="my-4 py-2 px-4 rounded-lg bg-gray-300 text-sm flex flex-col md:flex-row flex-grow" action="{{ url('boards0') }}" method="POST">
             @csrf
             <input  class="py-1 px-2 rounded text-center flex-initial" name="user_id" value={{Auth::user()->id}} style="width:50px;">
             <input class="py-1 px-2 rounded text-center flex-initial" type="text" name="user_name" value={{ Auth::user()->name }} maxlength="20" required>
@@ -12,11 +12,11 @@
         </form>
         <div class="my-2 p-2 rounded-lg">
             <ul>
-                @foreach ($boards as $board)
+                @foreach ($messages as $message)
                     <hr>
-                    <p class="text-xs text-left">{{$board->created_at}} ＠{{$board->user_name}}</p>
-                    <li class="w-75 mb-3 p-2 rounded-lg bg-white text-dark relative @if($board->user_name == Auth::user()->name) self @else other @endif" style="list-style:none;">
-                        {{$board->message}}
+                    <p class="text-xs text-left">{{$message->created_at}} ＠{{$message->user_name}}</p>
+                    <li class="w-75 mb-3 p-2 rounded-lg bg-white text-dark relative @if($message->user_name == Auth::user()->name) self @else other @endif" style="list-style:none;">
+                        {{$message->message}}
                     </li>
                 @endforeach
             </ul>
