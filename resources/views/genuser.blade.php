@@ -1,12 +1,11 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>general users 
+<h3>general users 
 <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" id="guentry">Manual Entry</a>
 <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" href="/generalusers/csv" id="csv entry">csv entry</a>
 <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-2" id="download">Generate Report</a>
-
-</h5>
+</h3>
 
      <!-- Bootstrapの定形コード… -->
      <div class="card-body">

@@ -1,8 +1,8 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>system users
-<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-2" id="download">Generate Report</a></h5>
+<h3>system users
+<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-sm ml-2" id="download">Generate Report</a></h3>
 
                     <!-- DataTales Example -->
                     <div class="card shadow mb-4">

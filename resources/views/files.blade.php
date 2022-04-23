@@ -1,9 +1,8 @@
-
 @extends('layouts.lists')
 @section('content')
     <!-- Bootstrapの定形コード… -->
     <div class="card-body">
-        <h5>File共有<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" id="fileentry">File Entry</a></h5>
+        <h3>File共有<a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" id="fileentry">File Entry</a></h3>
         <p></p>
         <!-- バリデーションエラーの表示に使用-->
     	@include('common.errors')

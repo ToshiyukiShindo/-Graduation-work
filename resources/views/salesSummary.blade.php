@@ -1,7 +1,7 @@
 @extends('layouts.lists')
 
 @section('content')
-<h5>Sales  summary(all)</h5>
+<h3>Sales  summary(all)</h3>
 <p></p>
 Display controll
 <div class="card mb-4 p-2">

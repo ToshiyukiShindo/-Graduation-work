@@ -117,3 +117,5 @@ Route::get('/files/{fileid}', [FilesController::class,'filedl'])->name('file.dow
 //Boardsページへ接続
 Route::get('/boards', [App\Http\Controllers\BoardsController::class, 'index'])->name('boards');
 Route::get('/boards0', [App\Http\Controllers\BoardsController::class, 'index0'])->name('boards0');
+Route::post('/boards', [App\Http\Controllers\BoardsController::class, 'store']);
+Route::post('/boards0', [App\Http\Controllers\BoardsController::class, 'store0']);
