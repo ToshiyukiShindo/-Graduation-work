@@ -14,7 +14,7 @@
             <ul>
                 @foreach ($boards as $board)
                     <hr>
-                    <p class="text-xs @if($board->user_id !== Auth::user()->id) text-left @endif">{{$board->created_at}} ＠{{$board->user_name}}</p>
+                    <p class="text-xs text-left">{{$board->created_at}} ＠{{$board->user_name}}</p>
                     <li class="w-75 mb-3 p-2 rounded-lg bg-white text-dark relative @if($board->user_name == Auth::user()->name) self @else other @endif" style="list-style:none;">
                         {{$board->message}}
                     </li>

@@ -72,7 +72,7 @@ class BoardsController extends Controller
         $boards = new Board;
         $form = $request->all();
         $boards->fill($form)->save();
-        return redirect('/boards',compact('boards'));
+        return view('/boards',compact('boards'));
     }
     public function store0(Request $request)
     {
@@ -81,7 +81,7 @@ class BoardsController extends Controller
         $boards = new Board;
         $form = $request->all();
         $boards->fill($form)->save();
-        return redirect('/boards0',compact('boards'));
+        return view('/boards0',compact('boards'));
     }
 
     /**
