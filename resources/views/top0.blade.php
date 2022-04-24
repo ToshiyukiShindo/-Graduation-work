@@ -86,6 +86,23 @@
                                 </div>
                             </div>
                         </div>
+                        
+                        <div class="col-xl-6 col-md-6 mb-2 mh-25">
+                            <div class="card border-left-danger shadow h-100 py-2">
+                                <div class="card-body">
+                                    <div class="row no-gutters align-items-center">
+                                        <div class="col mr-2">
+                                            @foreach ($message_counts as $message_count)
+                                            <div class="text-xs font-weight-bold text-danger text-uppercase mb-1">
+                                                Today's message<br> {{'<'.$today.'>'}}</div>
+                                            <div class="h5 mb-0 font-weight-bold text-gray-800">{{$message_count->message_counts.'件'}}</div>
+                                            @endforeach
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
     </div>
         
     

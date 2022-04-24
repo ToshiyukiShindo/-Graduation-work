@@ -7,6 +7,7 @@ use App\Models\User;
 use App\Models\Post; //この行を上に追加
 use App\Models\Store; //この行を上に追加
 use App\Models\Sale;
+use App\Models\Board;
 use Validator;
 use App\Http\Controllers\HomeController;//追記
 use Illuminate\Support\Facades\Hash;
@@ -38,17 +39,22 @@ class HomeController extends Controller
         $date = date_format($date , 'Y-m');
         $year = date_create() ;
         $year = date_format($year , 'Y');
+        $today = date_create();
+        $today = date_format($today , 'm-d');
         $total_thismonth_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_mtotal')
         ->where('term',$date)->get();
         $total_thisyear_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_ytotal')
         ->where('term','LIKE',$year.'%')->get();
+        $message_counts = Board::where('created_at','LIKE','%'.$today.'%')
+        ->selectRaw('COUNT(id) as message_counts')
+        ->get();
         $counts = Sale::select('term')
         ->selectRaw('COUNT(id) as count_records')
         ->where('created_at','LIKE',$date.'%')
         ->groupBy('term')
         ->get();
         $posts = Post::latest('updated_at')->take(2)->get();
-        return view('top0',compact('posts','date','year','total_thismonth_sales','total_thisyear_sales','counts'));
+        return view('top0',compact('posts','date','year','total_thismonth_sales','total_thisyear_sales','counts','message_counts','today'));
 
     }
     
@@ -59,17 +65,22 @@ class HomeController extends Controller
         $date = date_format($date , 'Y-m');
         $year = date_create() ;
         $year = date_format($year , 'Y');
+        $today = date_create();
+        $today = date_format($today , 'm-d');
         $total_thismonth_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_mtotal')
         ->where('term',$date)->get();
         $total_thisyear_sales = Sale::selectRaw('SUM(service_sales+loyality+goods_sales+other_sales) as sales_ytotal')
         ->where('term','LIKE',$year.'%')->get();
+        $message_counts = Board::where('created_at','LIKE','%'.$today.'%')
+        ->selectRaw('COUNT(id) as message_counts')
+        ->get();
         $counts = Sale::select('term')
         ->selectRaw('COUNT(id) as count_records')
         ->where('created_at','LIKE',$date.'%')
         ->groupBy('term')
         ->get();
         $posts = Post::latest('updated_at')->take(2)->get();
-        return view('top',compact('users','posts','date','year','total_thismonth_sales','total_thisyear_sales','counts'));
+        return view('top',compact('users','posts','date','year','total_thismonth_sales','total_thisyear_sales','counts','message_counts','today'));
     }
     
     public function gulist()
