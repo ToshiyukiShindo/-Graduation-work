@@ -117,16 +117,18 @@
                     <span>Posts</span></a>
             </li>
             
-            <!-- Nav Item - Tables -->
+            <!-- Nav Item - Pages Collapse Menu -->
             <li class="nav-item">
-                <a class="nav-link" href="/accountitems">
-                    <span>Accounts settings</span></a>
-            </li>
-            
-            <!-- Nav Item - Tables -->
-            <li class="nav-item">
-                <a class="nav-link" href="/reportterms">
-                    <span>Report settings</span></a>
+                <a class="nav-link" href="#" data-toggle="collapse" data-target="#collapseUtilities"
+                    aria-expanded="true" aria-controls="collapseUtilities">
+                    <span>Settings</span>
+                </a>
+                <div id="collapseUtilities" class="collapse" aria-labelledby="headingPages" data-parent="#accordionSidebar">
+                    <div class="bg-white py-2 collapse-inner rounded">
+                        <a class="collapse-item" href="/accountitems">Account items</a>
+                        <a class="collapse-item" href="/reportterms">Report folder</a>
+                    </div>
+                </div>
             </li>
 
 
@@ -138,7 +140,7 @@
             </li>
             @else
             <li class="nav-item hidden">
-                <a class="nav-link text-gray" href="#">
+                <a class="nav-link text-gray" href="/home">
                     <span>Admin</span></a>
             </li>
             @endif

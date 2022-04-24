@@ -126,9 +126,7 @@
                     <span>Admin</span></a>
             </li>
             @else
-            <li class="nav-item hidden">
-                <a class="nav-link" href="#">
-                    <span>Admin</span></a>
+            <li class="nav-item hidden mb-4">
             </li>
             @endif
 
