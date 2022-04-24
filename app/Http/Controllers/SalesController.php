@@ -11,6 +11,7 @@ use App\Http\Controllers\HomeController;//追記
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Facades\DB;
 use Rap2hpoutre\FastExcel\FastExcel;
+use Symfony\Component\HttpFoundation\StreamedResponse;
 
 class SalesController extends Controller
 {
@@ -266,7 +267,28 @@ class SalesController extends Controller
     }
     return redirect(route('csv0',['count' => $count]));
   }
+  
+  public function download( Request $request )
+    {
+        $cvsList = [
+             ['term', 'store_org_code', 'store_name','service_sales','loyailty','goods_sales','other_sales','created_at','updated_at']
+        ];
+        $response = new StreamedResponse (function() use ($request, $cvsList){
+            $stream = fopen('php://output', 'w');
 
-    
+            //　文字化け回避
+            stream_filter_prepend($stream,'convert.iconv.utf-8/cp932//TRANSLIT');
+
+            // CSVデータ
+            foreach($cvsList as $key => $value) {
+                fputcsv($stream, $value);
+            }
+            fclose($stream);
+        });
+        $response->headers->set('Content-Type', 'application/octet-stream');
+        $response->headers->set('Content-Disposition', 'attachment; filename="salestemplate.csv"');
+ 
+        return $response;
+    }
     
 }

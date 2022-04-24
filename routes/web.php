@@ -120,6 +120,9 @@ Route::post('/generalusers/csv/upload', [HomeController::class,'upload']);
 Route::get('salesentry/csv', [SalesController::class,'csvindex'])->name('csv');
 Route::get('salesentry/csv0', [SalesController::class,'csvindex0'])->name('csv0');
 Route::post('/salesentry/csv/upload', [SalesController::class,'upload']);
+//salesテンプレートをダウンロード
+Route::get('salesentry/download', [SalesController::class,'download'])->name('csv3');
+
 
 //fileをダウンロード
 Route::get('/files/{fileid}', [FilesController::class,'filedl'])->name('file.download');

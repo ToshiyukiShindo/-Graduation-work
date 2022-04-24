@@ -1,7 +1,7 @@
 @extends('layouts.lists')
 @section('content')
 
-<div class="upload">
+<div class="upload mb-4">
     <p>salesのCSVデータを選択してください。</p>
     <form action="/salesentry/csv/upload/" method="post" enctype="multipart/form-data">
       @csrf
@@ -9,6 +9,8 @@
       <button>送信</button>
     </form>
   </div>
+    <h6>※CSVデータのテンプレートはこちら</h6>
+    <a class="d-none d-sm-inline-block btn btn-sm btn-primary shadow-smv ml-2" href="/salesentry/download">CSV template</a>
 
 @if($cnt==0)
 @else
